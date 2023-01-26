@@ -21,15 +21,11 @@ Usuario: cliente que compra productos
 
 Producto: elementos que el cliente compra
 
-Marca: empresa que fabrica el producto
-
 Carrito: lista de productos a comprar
 
 Pedido: compra de los productos por parte del usuario
 
 Review: puntuación de los usuarios sobre un producto
-
-Whishlist: lista de productos deseados por el usuario
 
 ### Funcionalidades del servicio interno 
 
