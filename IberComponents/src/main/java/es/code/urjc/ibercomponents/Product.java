@@ -12,21 +12,24 @@ public class Product
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id = null;
-
+    
+    private String name;
+    
     private String description;
 
     private String features;
 
     private String image;
-    private Float price;
+    private double price;
 
-    private Float score;
+    private double score;
 
-    public Product(String descipcion, Float score, Float precio, String features, String image) {
+    public Product(String name, String descipcion, double d, int i, String features, String image) {
 
+    	this.name = name;
         this.description = descipcion;
-        this.score = score;
-        this.price = precio;
+        this.score = d;
+        this.price = i;
         this.features = features;
         this.image = image;
     }
@@ -36,11 +39,11 @@ public class Product
     }
 
 
-    public Float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public Float getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -55,7 +58,15 @@ public class Product
     public String getFeatures() {
         return features;
     }
+    
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public void setDescription(String description) {
         this.description = description;
     }
