@@ -25,7 +25,6 @@ public class Product
     private double score;
 
     public Product(String name, String descipcion, double d, int i, String features, String image) {
-
     	this.name = name;
         this.description = descipcion;
         this.score = d;
