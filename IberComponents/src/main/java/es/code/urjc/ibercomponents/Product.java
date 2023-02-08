@@ -1,27 +1,34 @@
 package es.code.urjc.ibercomponents;
 
 import javax.annotation.processing.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
+@Table(name = "Product")
 public class Product
 {
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id = null;
-    
+
+     @Column(name = "nombre")
     private String name;
-    
+
+    @Column(name = "descripcion")
     private String description;
 
+    @Column(name = "detalles")
     private String features;
 
+    @Column(name = "imagen")
     private String image;
+
+    @Column(name = "precio")
     private double price;
 
+
+    @Column(name = "puntuacion reviews")
     private double score;
 
     public Product(String name, String descipcion, double d, int i, String features, String image) {
