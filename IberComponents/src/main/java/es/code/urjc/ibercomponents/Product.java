@@ -4,31 +4,30 @@ import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Product")
 public class Product
 {
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private Long id = null;
+    private Long id ;
 
-     @Column(name = "nombre")
+     //@Column(name = "nombre")
     private String name;
 
-    @Column(name = "descripcion")
+    //@Column(name = "descripcion")
     private String description;
 
-    @Column(name = "detalles")
+    //@Column(name = "detalles")
     private String features;
 
-    @Column(name = "imagen")
+    //@Column(name = "imagen")
     private String image;
 
-    @Column(name = "precio")
+    //@Column(name = "precio")
     private double price;
 
 
-    @Column(name = "puntuacion reviews")
+    //@Column(name = "puntuacion reviews")
     private double score;
 
     public Product(String name, String descipcion, double d, int i, String features, String image) {

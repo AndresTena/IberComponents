@@ -1,33 +1,31 @@
 package es.code.urjc.ibercomponents;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ProductService {
-    //  @Autowired
-    private ProductRepository repository;
 
-    public Optional<Product> findById(long id)
+@Service
+public class UserService {
+    private UserRepository repository;
+
+    public Optional<User> findById(long id)
     {
         return repository.findById(id);
     }
 
-    public List<Product> findAll()
+    public List<User> findAll()
     {
         return repository.findAll();
     }
 
-    public void save(Product product)
+    public void save(User product)
     {
         repository.save(product);
     }
 
-    public void delete(Product product)
+    public void delete(User product)
     {
         repository.delete(product);
     }

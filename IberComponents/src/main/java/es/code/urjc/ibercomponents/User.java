@@ -4,7 +4,7 @@ package es.code.urjc.ibercomponents;
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
-@Entity (name = "UserTable")
+@Entity
 public class User {
 
     @Id

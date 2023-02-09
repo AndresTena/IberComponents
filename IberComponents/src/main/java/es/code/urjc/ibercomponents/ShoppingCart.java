@@ -6,12 +6,15 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
-@Entity(name = "ShoppingCart")
+@Entity
+@Table(name = "ShoppingCart")
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+    @Column(name = "ejemplo")
     @OneToMany
     private List<Product> products;
 
