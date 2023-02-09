@@ -11,8 +11,9 @@ public class User {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private String password;
+    private String user_name;
+    private String user_password;
+    private Boolean user_admin;
 
     @OneToOne(cascade = CascadeType.ALL)
     private ShoppingCart cart;
@@ -20,26 +21,27 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password, ShoppingCart cart) {
-        this.name = name;
-        this.password = password;
+    public User(String user_name, String user_password, ShoppingCart cart, Boolean user_admin) {
+        this.user_name = user_name;
+        this.user_password = user_password;
         this.cart = cart;
+        this.user_admin = user_admin;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return user_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.user_name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return user_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String password) {
+        this.user_password = password;
     }
 
     public ShoppingCart getShoppingCart() {
@@ -48,5 +50,13 @@ public class User {
 
     public void setShoppingCart(ShoppingCart cart) {
         this.cart = cart;
+    }
+
+    public boolean getUserAdmin() {
+        return user_admin;
+    }
+
+    public void setUserAdmin(Boolean UserAdmin) {
+        this.user_admin = user_admin;
     }
 }

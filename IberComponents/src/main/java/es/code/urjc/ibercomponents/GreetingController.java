@@ -13,9 +13,10 @@ public class GreetingController {
 	private ProductService productService;
     @GetMapping("/home")
     public String home(Model model) {
-
         List<Product> productList = productService.findAll();
-        model.addAttribute("products", productList);
+        if (productList != null){
+            model.addAttribute("products", productList);
+        }
         return "index";
     }
 
