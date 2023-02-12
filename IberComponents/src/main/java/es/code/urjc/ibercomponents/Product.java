@@ -2,6 +2,7 @@ package es.code.urjc.ibercomponents;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
 public class Product
@@ -11,33 +12,38 @@ public class Product
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id ;
 
-     //@Column(name = "nombre")
+     @Column(name = "nombre")
     private String name;
 
-    //@Column(name = "descripcion")
+    @Column(name = "descripcion")
     private String description;
 
-    //@Column(name = "detalles")
+    @Column(name = "detalles")
     private String features;
 
+    /*
     //@Column(name = "imagen")
-    private String image;
+    @Lob
+    private Blob image;
+     */
 
-    //@Column(name = "precio")
+    @Column(name = "precio")
     private double price;
 
 
-    //@Column(name = "puntuacion reviews")
+    @Column(name = "puntuacionReviews")
     private double score;
 
-    public Product(String name, String descipcion, double d, int i, String features, String image) {
-    	this.name = name;
+    public Product(String name, String descipcion, double d, int i, String features) {
+        this.name = name;
         this.description = descipcion;
         this.score = d;
         this.price = i;
         this.features = features;
-        this.image = image;
-    }
+    } public Product(String name, String descipcion) {
+    this.name = name;
+    this.description = descipcion;
+}
 
     public Product() {
 

@@ -1,64 +1,62 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <title>"{{product.name}}"</title>
-  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="js/jquery.cycle.lite.js"></script>
-  <link href="css/reset.css" rel="stylesheet" type="text/css" />
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
-  <!-- SlideShow settings -->
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('div.slides').cycle({ //Slides block
-        timeout: 5000,
-        pause: 1,
-      });
-    });
-  </script>
-  <!-- end -->
-</head>
-<body>
-<div id="fb-root"></div>
-<div id="wrapper">
-  <!-- Header -->
-  <div id="header"><img class="logo" alt="" src="{{product.image}}" /></div>
-  <!-- end -->
-  <div id="content">
-    <!-- Slideshow -->
-    <img alt="" src="{{product.image}}"/>
-    <!-- end -->
-    <!-- Any product info -->
-    <div class="info">
-      <h2>Producto a pedir</h2>
-      <p>Simple Product - a simple HTML template in a minimalist style, which you can get for free. Template is perfect for creating your own portfolio, and corporate website. Pure and simple appearance, provides maximum absorption of your information.</p>
-      <h3>Caracteristicas Tecnicas</h3>
-      <ul class="get">
-        <li>A good site in a minimalist style that looks good.</li>
-        <li>Well structured understandable code. All the basic blocks commented.</li>
-        <li>Supports all major browsers.</li>
-      </ul>
-    </div>
-    <!-- end -->
-    <!-- Yelow buttons -->
-    <div class="buttons"> <a href="#" class="demo">View Demo</a> <a href="#" class="download">Free Download</a> </div>
-    <!-- end -->
-  </div>
-  <!-- Start footer -->
-  <div id="footer">
-    <!-- Facebook likes -->
-    <div class="like">
-    </div>
-    <!-- end -->
-    <!-- PayPal Donate -->
-    <div class="donate"><!-- end -->
-    </div>
-  </div>
-  <!-- end footer -->
-</div>
-<!-- License info -->
-<!-- end -->
-</body>
-</html>
+{{>header}}
+<!-- Page content-->
+<div class="container">
+  <div class="row">
+    <!-- Blog entries-->
+    <div class="col-lg-8">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+        <div class="card-body">
+          <div class="small text-muted">January 1, 2022</div>
+          <h2 class="card-title">{{product.name}}                </h2>
+          <p class="card-text">{{product.description}}            </p>
+          <a class="btn btn-primary" href="#!">Añadir al carrito</a>
+        </div>
+      </div>
 
+    </div>
+    <!-- Side widgets-->
+    <div class="col-lg-4">
+      <!-- Search widget-->
+      <div class="card mb-4">
+        <div class="card-header">Search</div>
+        <div class="card-body">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+          </div>
+        </div>
+      </div>
+      <!-- Categories widget-->
+      <div class="card mb-4">
+        <div class="card-header">Categories</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <ul class="list-unstyled mb-0">
+                <li><a href="#!">Web Design</a></li>
+                <li><a href="#!">HTML</a></li>
+                <li><a href="#!">Freebies</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul class="list-unstyled mb-0">
+                <li><a href="#!">JavaScript</a></li>
+                <li><a href="#!">CSS</a></li>
+                <li><a href="#!">Tutorials</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Side widget-->
+      <div class="card mb-4">
+        <div class="card-header">Side Widget</div>
+        <div class="card-body">Las tarjetas gráficas se suelen utilizar para procesamiento avanzado de graficos, como videojuegos o minar criptomonedas</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{{>footer}}
