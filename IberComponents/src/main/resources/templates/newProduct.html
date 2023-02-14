@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
+{{>header}}
 
-<div class ="container mt-4">
-  <div class = "col-sm-6">
-    <form action="formulario">
-    <div class = "card">
-      <div class = "card-header"></div>
-      <div class = "card-body"></div>
-      <div class = "card-footer"></div>
-    </div>
-    </form>
+<form action="/newProduct" method="post" enctype="multipart/form-data">
+  <h2>New Product</h2>
+  <div>
+    <label>Nombre: </label>
+    <input name="name" placeholder="title"/>
   </div>
-</div>
-</body>
-</html>
+  <div>
+    <label>Descripción: </label>
+    <textarea name="description" placeholder="description"></textarea>
+  </div>
+  <div>
+    <label>Características: </label>
+    <textarea name="features" placeholder="features"></textarea>
+  </div>
+  <div>
+    <label>Precio: </label>
+    <textarea name="price" placeholder="price"></textarea>
+  </div>
+
+  <p>Image: </p>
+  <input type='file' name='imageField' accept=".jpg, .jpeg" />
+
+  <p>
+    <button onclick="location.href='/'; return false;">Cancel</button>
+    <input type="submit" value="Save"/>
+  </p>
+</form>
+
+{{>footer}}
