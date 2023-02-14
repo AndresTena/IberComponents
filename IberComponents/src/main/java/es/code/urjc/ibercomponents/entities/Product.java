@@ -1,4 +1,4 @@
-package es.code.urjc.ibercomponents;
+package es.code.urjc.ibercomponents.entities;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
@@ -12,20 +12,18 @@ public class Product
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id ;
 
-     @Column(name = "nombre")
+     @Column(name = "nombre", length = 100)
     private String name;
 
-    @Column(name = "descripcion")
+    @Column(length = 10000, name = "description")
     private String description;
 
-    @Column(name = "detalles")
+    @Column(length = 3000)
     private String features;
 
-    /*
-    //@Column(name = "imagen")
+    @Column(name = "imagen")
     @Lob
     private Blob image;
-     */
 
     @Column(name = "precio")
     private double price;

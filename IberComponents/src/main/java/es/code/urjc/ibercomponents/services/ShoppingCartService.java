@@ -1,5 +1,7 @@
-package es.code.urjc.ibercomponents;
+package es.code.urjc.ibercomponents.services;
 
+import es.code.urjc.ibercomponents.entities.ShoppingCart;
+import es.code.urjc.ibercomponents.repositories.ShoppingCartRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

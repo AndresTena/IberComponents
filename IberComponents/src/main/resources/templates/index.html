@@ -1,11 +1,12 @@
 {{>header}}
     <body>
 
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         {{#products}}
         <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
@@ -35,15 +36,14 @@
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product/{{id}}">view details</a></div>
                             </div>
                             <div class = "text-center">
-                            <p>{{description}}</p>
                             </div>
                         </div>
                     </div>
 
-                    </div>
-            </div>
-    </section>
         {{/products}}
+            </div>
+        </div>
+    </section>
     </body>
 
     {{>footer}}

@@ -1,5 +1,7 @@
-package es.code.urjc.ibercomponents;
+package es.code.urjc.ibercomponents.services;
 
+import es.code.urjc.ibercomponents.entities.User;
+import es.code.urjc.ibercomponents.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

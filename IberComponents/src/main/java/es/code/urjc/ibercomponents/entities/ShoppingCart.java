@@ -1,4 +1,4 @@
-package es.code.urjc.ibercomponents;
+package es.code.urjc.ibercomponents.entities;
 
 import javax.persistence.*;
 
