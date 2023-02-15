@@ -1,4 +1,4 @@
-package es.code.urjc.ibercomponents.entities;
+package es.code.urjc.ibercomponents;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
