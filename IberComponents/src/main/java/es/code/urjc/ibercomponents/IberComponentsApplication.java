@@ -41,7 +41,7 @@ public class IberComponentsApplication implements CommandLineRunner {
                         "Cuando cuentas con la arquitectura de procesadores de escritorio más avanzada del mundo para jugadores y creadores de contenido, las posibilidades son infinitas. " +
                         "Ya sea que juegues los juegos más recientes, diseñes el próximo rascacielos o proceses datos, necesitas un procesador poderoso que pueda dar"
                 , 3.5, 500,
-                "Plataforma: Computadora de escritori"
+                "Plataforma: Computadora de escritorio"
 
                         );
         productRepository.save(product2);
