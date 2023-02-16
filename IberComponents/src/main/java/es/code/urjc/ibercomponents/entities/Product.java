@@ -3,6 +3,7 @@ package es.code.urjc.ibercomponents.entities;
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.List;
 
 @Entity
 public class Product
@@ -12,7 +13,7 @@ public class Product
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id ;
 
-     @Column(name = "nombre", length = 100)
+    @Column(name = "nombre", length = 100)
     private String name;
 
     @Column(length = 10000, name = "description")
@@ -32,16 +33,18 @@ public class Product
     @Column(name = "puntuacionReviews")
     private double score;
 
+
+    @Column(name = "resenas")
+    @OneToMany
+    private List<Review> reviews;
+
     public Product(String name, String descipcion, double d, int i, String features) {
         this.name = name;
         this.description = descipcion;
         this.score = d;
         this.price = i;
         this.features = features;
-    } public Product(String name, String descipcion) {
-    this.name = name;
-    this.description = descipcion;
-}
+    }
 
     public Product() {
 
