@@ -14,17 +14,21 @@ public class User {
     private String user_password;
     private Boolean user_admin;
 
+    private String gmail;
+
+
     @OneToOne(cascade = CascadeType.ALL)
     private ShoppingCart cart;
 
     public User() {
     }
 
-    public User(String user_name, String user_password, ShoppingCart cart, Boolean user_admin) {
+    public User(String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail) {
         this.user_name = user_name;
         this.user_password = user_password;
         this.cart = cart;
         this.user_admin = user_admin;
+        this.gmail = gmail;
     }
 
     public String getUserName() {
@@ -57,5 +61,13 @@ public class User {
 
     public void setUserAdmin(Boolean UserAdmin) {
         this.user_admin = user_admin;
+    }
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 }
