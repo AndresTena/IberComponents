@@ -22,9 +22,12 @@ public class Product
     @Column(length = 3000)
     private String features;
 
-    @Column(name = "imagen")
+    @Column(name = "archivoImagen")
     @Lob
-    private Blob image;
+    private Blob imageFile;
+
+    @Column(name = "imagen")
+    private boolean image;
 
     @Column(name = "precio")
     private double price;
@@ -33,10 +36,10 @@ public class Product
     @Column(name = "puntuacionReviews")
     private double score;
 
-
     @Column(name = "resenas")
     @OneToMany
     private List<Review> reviews;
+
 
     public Product(String name, String descipcion, double d, int i, String features) {
         this.name = name;
@@ -75,6 +78,12 @@ public class Product
         return name;
     }
 
+    public List<Review> getReviews(){return this.reviews;}
+
+    public Blob getImageFile() {return imageFile;}
+
+    public boolean getImage(){return this.image;}
+
     public void setName(String name) {
         this.name = name;
     }
@@ -98,4 +107,9 @@ public class Product
     public void setScore(Float score) {
         this.score = score;
     }
+
+    public void setReviews(List <Review> reviews){this.reviews = reviews;}
+
+    public void setImageFile(Blob image) {this.imageFile = image;}
+    public void setImage(boolean image){this.image = image;}
 }
