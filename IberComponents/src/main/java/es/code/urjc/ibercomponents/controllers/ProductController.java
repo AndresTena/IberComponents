@@ -3,6 +3,8 @@ package es.code.urjc.ibercomponents.controllers;
 
 import es.code.urjc.ibercomponents.entities.Product;
 import es.code.urjc.ibercomponents.services.ProductService;
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import java.util.Optional;
 @Controller
 public class ProductController {
 
+    @Autowired
     private ProductService productService;
 
     @RequestMapping("/product/{id}")
@@ -47,7 +50,7 @@ public class ProductController {
             //product.setImage(true);
         }
 
-        if((product.getId() != null) && (product.getFeatures() != null) &&(product.getName() != null )&&(product.getPrice() > 0)&& (product.getName()!= null) )
+        if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
         {
             productService.save(product);
 
