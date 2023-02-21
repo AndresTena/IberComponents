@@ -22,12 +22,12 @@ public class Product
     @Column(length = 3000)
     private String features;
 
-    @Column(name = "archivoImagen")
+    @Column(name = "nombreImagen")
     @Lob
-    private Blob imageFile;
+    private String imageName;
 
     @Column(name = "imagen")
-    private boolean image;
+    private boolean imageBool;
 
     @Column(name = "precio")
     private double price;
@@ -80,9 +80,9 @@ public class Product
 
     public List<Review> getReviews(){return this.reviews;}
 
-    public Blob getImageFile() {return imageFile;}
+    public String getImageName() {return imageName;}
 
-    public boolean getImage(){return this.image;}
+    public boolean getImageBool(){return this.imageBool;}
 
     public void setName(String name) {
         this.name = name;
@@ -110,6 +110,6 @@ public class Product
 
     public void setReviews(List <Review> reviews){this.reviews = reviews;}
 
-    public void setImageFile(Blob image) {this.imageFile = image;}
-    public void setImage(boolean image){this.image = image;}
+    public void setImageName(String imageName) {this.imageName = imageName;}
+    public void setImageBool(boolean imageBool){this.imageBool = imageBool;}
 }

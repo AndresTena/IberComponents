@@ -13,11 +13,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Optional;
 
 @Controller
 public class ProductController {
+
+    private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
     @Autowired
     private ProductService productService;
@@ -43,11 +51,14 @@ public class ProductController {
     }
 
     @PostMapping("/newProduct")
-    public String newProductProcess(Model model, Product product, MultipartFile imageField) throws IOException {
+    public String newProductProcess(Model model, Product product, String imageName, MultipartFile image) throws IOException {
 
-        if (!imageField.isEmpty()) {
-            product.setImageFile(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
-            product.setImage(true);
+        if (!image.isEmpty()) {
+            product.setImageName(imageName);
+            Files.createDirectories(IMAGES_FOLDER);
+            Path imagePath = IMAGES_FOLDER.resolve(imageName + ".png");
+            image.transferTo(imagePath);
+            product.setImageBool(true);
         }
 
         if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
