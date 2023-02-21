@@ -46,8 +46,8 @@ public class ProductController {
     public String newProductProcess(Model model, Product product, MultipartFile imageField) throws IOException {
 
         if (!imageField.isEmpty()) {
-            //product.setImageFile(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
-            //product.setImage(true);
+            product.setImageFile(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+            product.setImage(true);
         }
 
         if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
