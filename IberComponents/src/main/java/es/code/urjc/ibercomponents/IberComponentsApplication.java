@@ -1,7 +1,9 @@
 package es.code.urjc.ibercomponents;
 
 import es.code.urjc.ibercomponents.entities.Product;
+import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.repositories.ProductRepository;
+import es.code.urjc.ibercomponents.repositories.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +18,9 @@ public class IberComponentsApplication implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ShoppingCartRepository shoppingCartRepository;
     @Override
     public void run(String... args) throws Exception
     {
@@ -45,5 +50,7 @@ public class IberComponentsApplication implements CommandLineRunner {
 
                         );
         productRepository.save(product2);
+        ShoppingCart shoppingCart = new ShoppingCart(1);
+        shoppingCartRepository.save(shoppingCart);
     }
 }

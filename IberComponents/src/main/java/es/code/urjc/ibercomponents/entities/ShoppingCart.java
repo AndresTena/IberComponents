@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Table(name = "ShoppingCart")
 public class ShoppingCart {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
@@ -20,8 +20,24 @@ public class ShoppingCart {
 
     public ShoppingCart() {}
 
+    public ShoppingCart(long id) {
+        this.id = id;
+    }
+
+
     public ShoppingCart(List<Product> products, String address) {
 
+    }
+
+    public void addProduct(Product product)
+    {
+        if(product!= null)
+        products.add(product);
+    }
+
+    public int getLength()
+    {
+        return products.size();
     }
 
     public Long getId() {
@@ -32,7 +48,7 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public List<Product> getproducts() {
+    public List<Product> getProducts() {
         return products;
     }
 

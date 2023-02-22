@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import es.code.urjc.ibercomponents.entities.Product;
+import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.services.ProductService;
+import es.code.urjc.ibercomponents.services.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +16,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GreetingController {
     @Autowired
     private ProductService productService;
+
+
+    @Autowired
+    private ShoppingCartService shoppingCart;
+
     @GetMapping("/")
     public String home(Model model) {
         List<Product> productList = productService.findAll();
+        /*Optional<ShoppingCart> shopping = shoppingCart.findById(0);
+        if(shopping!= null)
+        {
+            model.addAttribute("shoppingCart", shopping);
+        }
+
+         */
         if (productList != null)
         {
             model.addAttribute("products", productList);
