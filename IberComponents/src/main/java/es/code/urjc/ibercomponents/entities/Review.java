@@ -16,9 +16,8 @@ public class Review {
     private String comment;
 
 
-    public Review(int score, String comment) {
+    public Review(int score) {
         this.score = score;
-        this.comment = comment;
     }
 
     public Review() {

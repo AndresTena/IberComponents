@@ -2,6 +2,7 @@ package es.code.urjc.ibercomponents.controllers;
 
 
 import es.code.urjc.ibercomponents.entities.Product;
+import es.code.urjc.ibercomponents.entities.Review;
 import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.ProductService;
@@ -96,6 +97,20 @@ public class ProductController {
         }
         else
             return "/newProduct";
+
+    }
+
+    @PostMapping("/newReview/{id}")
+    public String newReviewProcess(Model model, @PathVariable long id) {
+
+        Optional<Product> product = productService.findById(id);
+        if(product.isPresent()) {
+            Review review = new Review((int) product.get().getScore());
+            product.get().addReview(review);
+            product.get().setScore(product.get().getReviewsMean());
+            //productService.save(product.get());
+        }
+        return "redirect:/product/"+product.get().getId();
 
     }
 }

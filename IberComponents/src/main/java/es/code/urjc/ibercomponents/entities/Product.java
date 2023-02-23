@@ -3,6 +3,7 @@ package es.code.urjc.ibercomponents.entities;
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -43,6 +44,7 @@ public class Product
         this.price = i;
         this.features = features;
         this.imageBool = imageBool;
+        this.reviews = new ArrayList<Review>();
     }
 
 
@@ -101,6 +103,20 @@ public class Product
 
     public void setScore(Float score) {
         this.score = score;
+    }
+
+    public void addReview(Review review){this.reviews.add(review);}
+
+    private static float getAverage(List<Review> list) {
+        long sum = 0;
+        for (Review i: list) {
+            sum += i.getScore();
+        }
+        return list.size() > 0 ? (float) sum / list.size() : 0;
+    }
+
+    public float getReviewsMean() {
+        return getAverage(reviews);
     }
 
     public void setReviews(List <Review> reviews){this.reviews = reviews;}
