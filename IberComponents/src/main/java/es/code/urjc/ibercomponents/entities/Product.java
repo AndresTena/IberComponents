@@ -49,6 +49,15 @@ public class Product
         this.features = features;
     }
 
+    public Product(String name, String descipcion, double d, int i, String features, String image) {
+        this.name = name;
+        this.description = descipcion;
+        this.score = d;
+        this.price = i;
+        this.features = features;
+        this.imageName = image;
+    }
+
     public Product() {
 
     }

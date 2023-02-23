@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    //@GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
-    private String user_name;
+    private String name;
     private String user_password;
     private Boolean user_admin;
 
@@ -23,20 +23,25 @@ public class User {
     public User() {
     }
 
-    public User(String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail) {
-        this.user_name = user_name;
+    public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail) {
+        this.name = user_name;
         this.user_password = user_password;
         this.cart = cart;
         this.user_admin = user_admin;
         this.gmail = gmail;
+        this.id = id;
+    }
+
+    public ShoppingCart getCart() {
+        return cart;
     }
 
     public String getUserName() {
-        return user_name;
+        return name;
     }
 
     public void setUserName(String name) {
-        this.user_name = name;
+        this.name = name;
     }
 
     public String getUserPassword() {

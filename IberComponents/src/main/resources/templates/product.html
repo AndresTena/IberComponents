@@ -18,7 +18,17 @@
           <h2 class="card-title">{{product.name}}                </h2>
           <p class="card-text">{{product.description}}            </p>
           <p class = "card-text"><ol>{{product.features}}</ol></p>
-          <a class="btn btn-primary" href="#!" value="Add_shopping_cart">Añadir al carrito</a>
+          <form action="/addProduct" method="post">
+          <a class="btn btn-primary" href="/shoppingCart" id="product">Añadir al carrito</a>
+          </form>
+          {{#userExists}}
+          {{#user.user_admin}}
+          <form action="/deleteProduct/{{product.id}}" method="post" enctype="multipart/form-data">
+            <input class="btn btn-outline-danger mt-auto" type="submit" value="delete"/>
+            <!--<div class="text-center"><a class="btn btn-outline-danger mt-auto">eliminar Producto</a></div>
+            --></form>
+          {{/user.user_admin}}
+          {{/userExists}}
         </div>
       </div>
 

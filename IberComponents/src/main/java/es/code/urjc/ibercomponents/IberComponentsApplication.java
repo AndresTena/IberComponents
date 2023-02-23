@@ -2,8 +2,10 @@ package es.code.urjc.ibercomponents;
 
 import es.code.urjc.ibercomponents.entities.Product;
 import es.code.urjc.ibercomponents.entities.ShoppingCart;
+import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.repositories.ProductRepository;
 import es.code.urjc.ibercomponents.repositories.ShoppingCartRepository;
+import es.code.urjc.ibercomponents.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +20,11 @@ public class IberComponentsApplication implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
-
     @Autowired
     private ShoppingCartRepository shoppingCartRepository;
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public void run(String... args) throws Exception
     {
@@ -46,11 +50,14 @@ public class IberComponentsApplication implements CommandLineRunner {
                         "Cuando cuentas con la arquitectura de procesadores de escritorio más avanzada del mundo para jugadores y creadores de contenido, las posibilidades son infinitas. " +
                         "Ya sea que juegues los juegos más recientes, diseñes el próximo rascacielos o proceses datos, necesitas un procesador poderoso que pueda dar"
                 , 3.5, 500,
-                "Plataforma: Computadora de escritorio"
+                "Plataforma: Computadora de escritorio","/assets/i5-11400F-jpg/"
 
                         );
+
         productRepository.save(product2);
         ShoppingCart shoppingCart = new ShoppingCart(1);
+        User admin = new User(1,"admin", "admin", shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es" );
+        userRepository.save(admin);
         shoppingCartRepository.save(shoppingCart);
     }
 }

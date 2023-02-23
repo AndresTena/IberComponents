@@ -27,8 +27,7 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    {{price}}
+                                    {{price}}€
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -36,6 +35,15 @@
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product/{{id}}">view details</a></div>
                             </div>
                             <div class = "text-center">
+
+                                {{#userExists}}
+                                {{#user.user_admin}}
+                                <form action="/deleteProduct/{{id}}" method="post" enctype="multipart/form-data">
+                                    <input class="btn btn-outline-danger mt-auto" type="submit" value="delete"/>
+                                <!--<div class="text-center"><a class="btn btn-outline-danger mt-auto">eliminar Producto</a></div>
+                                --></form>
+                                    {{/user.user_admin}}
+                                {{/userExists}}
                             </div>
                         </div>
                     </div>

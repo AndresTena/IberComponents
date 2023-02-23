@@ -15,28 +15,29 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#!">IberComponents</a>
+      <a class="navbar-brand" href="/">IberComponents</a>
+
+      {{#userExists}}
+      <a class="navbar-brand">Bienvenido,{{user.name}}</a>
+      {{/userExists}}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#!">Sobre nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="/aboutUs">Sobre nosotros</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#!">All Products</a></li>
+              <li><a class="dropdown-item" href="/login">Login</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-              <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+              <li><a class="dropdown-item" href="/signin">Sign-in</a></li>
             </ul>
           </li>
-
-          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="/signin">Sign-in</a></li>
-
-
+          {{#userExists}}
+          {{#user.user_admin}}
           <li class="nav-item"><a class="nav-link" href="/newProduct">Añadir Producto</a></li>
-
+          {{/user.user_admin}}
+          {{/userExists}}
         </ul>
         <form class="d-flex" action = "/shoppingCart">
           <button class="btn btn-outline-dark" type="submit">
@@ -45,9 +46,6 @@
             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
           </button>
         </form>
-        {{#userLogged}}
-
-        {{/userLogged}}
       </div>
     </div>
   </nav>

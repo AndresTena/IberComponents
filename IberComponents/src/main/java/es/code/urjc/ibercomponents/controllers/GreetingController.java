@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import es.code.urjc.ibercomponents.entities.Product;
 import es.code.urjc.ibercomponents.entities.ShoppingCart;
+import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.services.ProductService;
 import es.code.urjc.ibercomponents.services.ShoppingCartService;
+import es.code.urjc.ibercomponents.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,20 +19,24 @@ public class GreetingController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
+
 
     @Autowired
     private ShoppingCartService shoppingCart;
 
     @GetMapping("/")
     public String home(Model model) {
-        List<Product> productList = productService.findAll();
-        /*Optional<ShoppingCart> shopping = shoppingCart.findById(0);
-        if(shopping!= null)
+        Optional<User> user = userService.findById(1);
+        if(user!=null)
         {
-            model.addAttribute("shoppingCart", shopping);
+            model.addAttribute("userExists", true);
+            model.addAttribute("user", user.get());
+        }else {
+            model.addAttribute("userExists", false);
         }
-
-         */
+    List<Product> productList = productService.findAll();
         if (productList != null)
         {
             model.addAttribute("products", productList);
@@ -38,5 +44,11 @@ public class GreetingController {
 
         model.addAttribute("userLogged", true);
         return "index";
+    }
+
+    @GetMapping("/aboutUs")
+    public String aboutUs()
+    {
+        return "aboutUs";
     }
 }

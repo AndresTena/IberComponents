@@ -2,7 +2,10 @@ package es.code.urjc.ibercomponents.controllers;
 
 
 import es.code.urjc.ibercomponents.entities.Product;
+import es.code.urjc.ibercomponents.entities.User;
+import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.ProductService;
+import es.code.urjc.ibercomponents.services.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +33,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/product/{id}")
-    public String getProduct(Model model, @PathVariable long id) {
+    public String getProduct(Model model, @PathVariable long id)
+    {
+        Optional<User> user = userService.findById(1);
+        if(user!=null) {
+            model.addAttribute("user", user.get());
+        }
 
         Optional<Product> product = productService.findById(id);
 
@@ -50,6 +61,22 @@ public class ProductController {
     public String newProduct() {
 
         return "newProduct";
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+            public String borrar(@PathVariable long id)
+    {
+        Optional<Product> p = productService.findById(id);
+        productService.delete(p.get());
+        return "index";
+    }
+
+    @PostMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable String id)
+    {
+        Optional<Product> p = productService.findById(Long.parseLong(id));
+        productService.delete(p.get());
+        return "index";
     }
 
     @PostMapping("/newProduct")
