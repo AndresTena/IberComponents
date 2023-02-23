@@ -6,13 +6,13 @@
     <div class="col-lg-8">
       <!-- Featured blog post-->
       <div class="card mb-4">
-        {{#product.image}}
-        <a href="#!"><img class="card-img-top" src="/products/{{product.id}}.png/images" alt="..." /></a>
-        {{/product.image}}
+        {{#product.imageBool}}
+        <a href="#!"><img class="card-img-top" src="/images/{{product.id}}.png" alt="..." /></a>
+        {{/product.imageBool}}
 
-        {{^product.image}}
-        <a href="#!"><img class="card-img-top" src="/images/no_image.png" alt="..." /></a>
-        {{/product.image}}
+        {{^product.imageBool}}
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /></a>
+        {{/product.imageBool}}
         <div class="card-body">
           <div class="small text-muted">January 1, 2022</div>
           <h2 class="card-title">{{product.name}}                </h2>

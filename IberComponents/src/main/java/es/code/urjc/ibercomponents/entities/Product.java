@@ -22,16 +22,11 @@ public class Product
     @Column(length = 3000)
     private String features;
 
-    @Column(name = "nombreImagen")
-    @Lob
-    private String imageName;
-
     @Column(name = "imagen")
     private boolean imageBool;
 
     @Column(name = "precio")
     private double price;
-
 
     @Column(name = "puntuacionReviews")
     private double score;
@@ -55,7 +50,6 @@ public class Product
         this.score = d;
         this.price = i;
         this.features = features;
-        this.imageName = image;
     }
 
     public Product() {
@@ -89,8 +83,6 @@ public class Product
 
     public List<Review> getReviews(){return this.reviews;}
 
-    public String getImageName() {return imageName;}
-
     public boolean getImageBool(){return this.imageBool;}
 
     public void setName(String name) {
@@ -119,6 +111,5 @@ public class Product
 
     public void setReviews(List <Review> reviews){this.reviews = reviews;}
 
-    public void setImageName(String imageName) {this.imageName = imageName;}
     public void setImageBool(boolean imageBool){this.imageBool = imageBool;}
 }

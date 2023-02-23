@@ -28,7 +28,7 @@ import java.util.Optional;
 @Controller
 public class ProductController {
 
-    private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
+    private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir")+"/src/main/resources/static", "images");
 
     @Autowired
     private ProductService productService;
@@ -82,19 +82,21 @@ public class ProductController {
     @PostMapping("/newProduct")
     public String newProductProcess(Model model, Product product, String imageName, MultipartFile image) throws IOException {
 
-        if (!image.isEmpty()) {
-            product.setImageName(imageName);
-            Files.createDirectories(IMAGES_FOLDER);
-            Path imagePath = IMAGES_FOLDER.resolve(imageName + ".png");
-            image.transferTo(imagePath);
-            product.setImageBool(true);
-        }
-
         if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
         {
-            productService.save(product);
+            if (!image.isEmpty()) {
+                product.setImageBool(true);
+            }
 
+            productService.save(product);
             model.addAttribute("id", product.getId());
+
+            if (product.getImageBool()) {
+                Files.createDirectories(IMAGES_FOLDER);
+                Path imagePath = IMAGES_FOLDER.resolve(product.getId() + ".png");
+                image.transferTo(imagePath);
+            }
+
 
             return "redirect:/product/"+product.getId();
         }
