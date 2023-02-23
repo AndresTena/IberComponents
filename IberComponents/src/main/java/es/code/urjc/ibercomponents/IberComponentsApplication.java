@@ -39,7 +39,7 @@ public class IberComponentsApplication implements CommandLineRunner {
                 "Sistema de enfriamiento WINDFORCE 2X con ventiladores alternativos\n" +
                 "Ventiladores de cuchilla únicos de 90mm\n" +
                 "Placa posterior de protección\n" +
-                "Reloj de núcleo 1755 MHz (Tarjeta de referencia: 1680 MHz)");
+                "Reloj de núcleo 1755 MHz (Tarjeta de referencia: 1680 MHz)", true);
         productRepository.save(product);
 
 
@@ -49,9 +49,8 @@ public class IberComponentsApplication implements CommandLineRunner {
                         "\n" +
                         "Cuando cuentas con la arquitectura de procesadores de escritorio más avanzada del mundo para jugadores y creadores de contenido, las posibilidades son infinitas. " +
                         "Ya sea que juegues los juegos más recientes, diseñes el próximo rascacielos o proceses datos, necesitas un procesador poderoso que pueda dar"
-                , 3.5, 500,
-                "Plataforma: Computadora de escritorio","/assets/i5-11400F-jpg/"
-
+                , 3.5, 84,
+                "Plataforma: Computadora de escritorio", true
                         );
 
         productRepository.save(product2);

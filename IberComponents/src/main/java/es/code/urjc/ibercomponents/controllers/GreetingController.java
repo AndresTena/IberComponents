@@ -27,7 +27,8 @@ public class GreetingController {
     private ShoppingCartService shoppingCart;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model)
+    {
         Optional<User> user = userService.findById(1);
         if(user!=null)
         {

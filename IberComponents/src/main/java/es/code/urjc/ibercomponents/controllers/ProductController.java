@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -63,20 +64,13 @@ public class ProductController {
         return "newProduct";
     }
 
-    @GetMapping("/deleteProduct/{id}")
-            public String borrar(@PathVariable long id)
-    {
-        Optional<Product> p = productService.findById(id);
-        productService.delete(p.get());
-        return "index";
-    }
 
     @PostMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable String id)
     {
         Optional<Product> p = productService.findById(Long.parseLong(id));
         productService.delete(p.get());
-        return "index";
+        return "productDeleted";
     }
 
     @PostMapping("/newProduct")

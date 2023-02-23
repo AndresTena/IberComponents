@@ -55,10 +55,10 @@ public class ShoppingCartController {
         ShoppingCart carrito = user.get().getCart();
         if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
         {
-            Optional<Product> product1 = productService.findById(1);
-            carrito.addProduct(product1.get());
+            carrito.addProduct(product.get());
             user.get().setShoppingCart(carrito);
             userService.save(user.get());
+            shoppingCart.save(carrito);
             return "/shoppingCart";
         }
         return "/";

@@ -36,21 +36,15 @@ public class Product
     private List<Review> reviews;
 
 
-    public Product(String name, String descipcion, double d, int i, String features) {
+    public Product(String name, String descipcion, double d, int i, String features, boolean imageBool) {
         this.name = name;
         this.description = descipcion;
         this.score = d;
         this.price = i;
         this.features = features;
+        this.imageBool = imageBool;
     }
 
-    public Product(String name, String descipcion, double d, int i, String features, String image) {
-        this.name = name;
-        this.description = descipcion;
-        this.score = d;
-        this.price = i;
-        this.features = features;
-    }
 
     public Product() {
 
