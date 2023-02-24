@@ -2,6 +2,7 @@ package es.code.urjc.ibercomponents.entities;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,18 +15,24 @@ public class ShoppingCart {
     private Long id;
 
 
-    @Column(name = "ejemplo")
+    @Column(name = "productos")
     @OneToMany
     private List<Product> products;
+
+
+    private double sumProductPrices;
 
     public ShoppingCart() {}
 
     public ShoppingCart(long id) {
         this.id = id;
+        this.sumProductPrices = 0;
     }
 
 
-    public ShoppingCart(List<Product> products, String address) {
+    public ShoppingCart(List<Product> products, String address)
+    {
+        this.sumProductPrices = 0;
 
     }
 
@@ -35,6 +42,18 @@ public class ShoppingCart {
         products.add(product);
     }
 
+    public void deleteProduct(Product product)
+    {
+        if(product!= null)
+            products.remove(product);
+    }
+
+    public void deleteAllProducts()
+    {
+        products = null;
+        products = new ArrayList<>();
+    }
+
     public int getLength()
     {
         return products.size();
@@ -42,6 +61,20 @@ public class ShoppingCart {
 
     public Long getId() {
         return id;
+    }
+
+    public double getSumProductPrices()
+    {
+        double suma = 0;
+        for(int i =0; i < products.size(); i++)
+        {
+            suma += products.get(i).getPrice();
+        }
+
+        this.sumProductPrices = suma;
+
+        return suma;
+
     }
 
     public void setId(Long id) {

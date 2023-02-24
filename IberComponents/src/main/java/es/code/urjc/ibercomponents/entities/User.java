@@ -16,6 +16,8 @@ public class User {
 
     private String gmail;
 
+    private double money;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     private ShoppingCart cart;
@@ -23,13 +25,14 @@ public class User {
     public User() {
     }
 
-    public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail) {
+    public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail, double money) {
         this.name = user_name;
         this.user_password = user_password;
         this.cart = cart;
         this.user_admin = user_admin;
         this.gmail = gmail;
         this.id = id;
+        this.money = money;
     }
 
     public ShoppingCart getCart() {
@@ -58,6 +61,14 @@ public class User {
 
     public void setShoppingCart(ShoppingCart cart) {
         this.cart = cart;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 
     public boolean getUserAdmin() {

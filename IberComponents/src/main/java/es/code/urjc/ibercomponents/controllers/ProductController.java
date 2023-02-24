@@ -3,6 +3,7 @@ package es.code.urjc.ibercomponents.controllers;
 
 import es.code.urjc.ibercomponents.entities.Product;
 import es.code.urjc.ibercomponents.entities.Review;
+import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.ProductService;
@@ -30,7 +31,7 @@ import java.util.Optional;
 @Controller
 public class ProductController {
 
-    private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir")+"/src/main/resources/static", "images");
+    private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir")+"/src/main/resources/static", "/images");
 
     @Autowired
     private ProductService productService;
@@ -66,13 +67,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable String id)
-    {
-        Optional<Product> p = productService.findById(Long.parseLong(id));
-        productService.delete(p.get());
-        return "productDeleted";
-    }
+
 
     @PostMapping("/newProduct")
     public String newProductProcess(Model model, Product product, String imageName, MultipartFile image) throws IOException {
@@ -100,6 +95,30 @@ public class ProductController {
 
     }
 
+
+
+
+    @PostMapping("/deleteProduct/{id}")
+    public String deleteProduct(Model model, @PathVariable String id)
+    {
+        Optional<Product> product = productService.findById(Long.parseLong(id));
+        Optional<User> user = userService.findById(1);
+        if(user!=null) {
+            model.addAttribute("user", user.get());
+        }
+        ShoppingCart carrito = user.get().getCart();
+        if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
+        {
+            productService.delete(product.get());
+            user.get().setShoppingCart(carrito);
+            userService.save(user.get());
+            return "/productDeleted";
+        }
+        return "/";
+
+    }
+
+
     @PostMapping("/newReview/{id}")
     public String newReviewProcess(Model model, @PathVariable long id) {
 
@@ -108,7 +127,8 @@ public class ProductController {
             Review review = new Review((int) product.get().getScore());
             product.get().addReview(review);
             product.get().setScore(product.get().getReviewsMean());
-            //productService.save(product.get());
+            productService.save(product.get());
+
         }
         return "redirect:/product/"+product.get().getId();
 

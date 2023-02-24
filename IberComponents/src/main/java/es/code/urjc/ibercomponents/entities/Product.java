@@ -46,6 +46,14 @@ public class Product
         this.imageBool = imageBool;
         this.reviews = new ArrayList<Review>();
     }
+    public Product(String name, String descipcion, double d, int i, String features) {
+        this.name = name;
+        this.description = descipcion;
+        this.score = d;
+        this.price = i;
+        this.features = features;
+        this.imageBool = true;
+    }
 
 
     public Product() {
@@ -115,7 +123,9 @@ public class Product
         return list.size() > 0 ? (float) sum / list.size() : 0;
     }
 
-    public float getReviewsMean() {
+    public float getReviewsMean()
+    {
+        score = getAverage(reviews);
         return getAverage(reviews);
     }
 

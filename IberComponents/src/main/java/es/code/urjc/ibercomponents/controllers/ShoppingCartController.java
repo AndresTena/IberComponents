@@ -43,6 +43,78 @@ public class ShoppingCartController {
 
 
 
+    @GetMapping("/deleteProductsShoppingCart")
+    public String deleteProductsShoppingCart(Model model)
+    {
+        Optional<User> user = userService.findById(1);
+        if(user!=null) {
+            model.addAttribute("user", user.get());
+        }
+        ShoppingCart carrito = user.get().getCart();
+
+        double money = user.get().getMoney() - carrito.getSumProductPrices();
+        if(money <0)
+        {
+            return "/";
+        }
+        //el usuario tiene dinero suficiente para pagar los productos
+        user.get().setMoney(user.get().getMoney() - carrito.getSumProductPrices());
+
+        carrito.deleteAllProducts();
+        user.get().setShoppingCart(carrito);
+        userService.save(user.get());
+        shoppingCart.save(carrito);
+        return "/";
+
+    }
+
+
+
+
+    @PostMapping("/deleteProductShoppingCart/{id}")
+    public String deleteProductSHoppingCart(Model model, @PathVariable String id)
+    {
+        Optional<Product> product = productService.findById(Long.parseLong(id));
+        Optional<User> user = userService.findById(1);
+        if(user!=null) {
+            model.addAttribute("user", user.get());
+        }
+        ShoppingCart carrito = user.get().getCart();
+        if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
+        {
+            carrito.deleteProduct(product.get());
+            user.get().setShoppingCart(carrito);
+            userService.save(user.get());
+            shoppingCart.save(carrito);
+            return "/shoppingCart";
+        }
+        return "/";
+
+    }
+
+
+    @GetMapping("/deleteProductShoppingCart/{id}")
+    public String deleteProductShoppingCart(Model model, @PathVariable String id)
+    {
+        Optional<Product> product = productService.findById(Long.parseLong(id));
+        Optional<User> user = userService.findById(1);
+        if(user!=null) {
+            model.addAttribute("user", user.get());
+        }
+        ShoppingCart carrito = user.get().getCart();
+        if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
+        {
+            carrito.deleteProduct(product.get());
+            user.get().setShoppingCart(carrito);
+            userService.save(user.get());
+            shoppingCart.save(carrito);
+            return "/shoppingCart";
+        }
+        return "/";
+
+    }
+
+
     @PostMapping("/addProduct/{id}")
     public String addProductShoppingCart(Model model, @PathVariable String id)
     {

@@ -55,7 +55,7 @@ public class IberComponentsApplication implements CommandLineRunner {
 
         productRepository.save(product2);
         ShoppingCart shoppingCart = new ShoppingCart(1);
-        User admin = new User(1,"admin", "admin", shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es" );
+        User admin = new User(1,"admin", "admin", shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es", 5000 );
         userRepository.save(admin);
         shoppingCartRepository.save(shoppingCart);
     }
