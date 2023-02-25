@@ -70,29 +70,6 @@ public class ShoppingCartController {
 
 
 
-
-    @PostMapping("/deleteProductShoppingCart/{id}")
-    public String deleteProductSHoppingCart(Model model, @PathVariable String id)
-    {
-        Optional<Product> product = productService.findById(Long.parseLong(id));
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
-        ShoppingCart carrito = user.get().getCart();
-        if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
-        {
-            carrito.deleteProduct(product.get());
-            user.get().setShoppingCart(carrito);
-            userService.save(user.get());
-            shoppingCart.save(carrito);
-            return "/shoppingCart";
-        }
-        return "/";
-
-    }
-
-
     @GetMapping("/deleteProductShoppingCart/{id}")
     public String deleteProductShoppingCart(Model model, @PathVariable String id)
     {
@@ -115,7 +92,7 @@ public class ShoppingCartController {
     }
 
 
-    @PostMapping("/addProduct/{id}")
+    @GetMapping("/addProduct/{id}")
     public String addProductShoppingCart(Model model, @PathVariable String id)
     {
 
@@ -125,12 +102,15 @@ public class ShoppingCartController {
             model.addAttribute("user", user.get());
         }
         ShoppingCart carrito = user.get().getCart();
-        if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
+
+        //no se puede comprar un producto que ya esté en el carrito
+        boolean condition =(product.get().getName() != null )&& (product.get().getPrice() > 0) && carrito.getProducts().contains(product.get());
+        if(condition)
         {
             carrito.addProduct(product.get());
             user.get().setShoppingCart(carrito);
             userService.save(user.get());
-            shoppingCart.save(carrito);
+            //shoppingCart.save(carrito);
             return "/shoppingCart";
         }
         return "/";

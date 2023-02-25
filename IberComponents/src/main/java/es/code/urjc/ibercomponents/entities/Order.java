@@ -12,9 +12,16 @@ public class Order {
     private Long id;
 
     @OneToMany
-    private List<Product> products;
+    private List<ShoppingCart> shoppingCarts;
 
+    public Order()
+    {}
 
+    public void addShoppingCart(ShoppingCart s)
+    {
+        if(s!= null)
+        shoppingCarts.add(s);
+    }
     public Long getId() {
         return id;
     }
