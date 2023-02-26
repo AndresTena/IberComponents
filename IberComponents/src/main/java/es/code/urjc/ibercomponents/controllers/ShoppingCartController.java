@@ -1,8 +1,10 @@
 package es.code.urjc.ibercomponents.controllers;
 
+import es.code.urjc.ibercomponents.entities.Order;
 import es.code.urjc.ibercomponents.entities.Product;
 import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.entities.User;
+import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,10 @@ public class ShoppingCartController {
 
     @Autowired
     private UserService userService;
+
+
+    @Autowired
+    private OrderService orderService;
 
 
     @Autowired
@@ -53,15 +59,23 @@ public class ShoppingCartController {
         ShoppingCart carrito = user.get().getCart();
 
         double money = user.get().getMoney() - carrito.getSumProductPrices();
-        if(money <0)
+        List<Order> orders = orderService.findAll();
+        Order order = orders.get(0);
+        if(money <0 && order != null)
         {
             return "/";
         }
+
+        ShoppingCart carritoAux = new ShoppingCart();
+        shoppingCart.save(carritoAux);
+        carritoAux.copyProducts(carrito);
+        order.addShoppingCart(carritoAux);
+        orderService.save(order);
         //el usuario tiene dinero suficiente para pagar los productos
         user.get().setMoney(user.get().getMoney() - carrito.getSumProductPrices());
-
         carrito.deleteAllProducts();
         user.get().setShoppingCart(carrito);
+
         userService.save(user.get());
         shoppingCart.save(carrito);
         return "/";
@@ -101,16 +115,16 @@ public class ShoppingCartController {
         if(user!=null) {
             model.addAttribute("user", user.get());
         }
-        ShoppingCart carrito = user.get().getCart();
 
         //no se puede comprar un producto que ya esté en el carrito
-        boolean condition =(product.get().getName() != null )&& (product.get().getPrice() > 0) && carrito.getProducts().contains(product.get());
+        boolean condition =(product.get().getName() != null )&& (product.get().getPrice() > 0);
         if(condition)
         {
+            ShoppingCart carrito = user.get().getCart();
             carrito.addProduct(product.get());
             user.get().setShoppingCart(carrito);
             userService.save(user.get());
-            //shoppingCart.save(carrito);
+            shoppingCart.save(carrito);
             return "/shoppingCart";
         }
         return "/";

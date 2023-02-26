@@ -1,5 +1,8 @@
 package es.code.urjc.ibercomponents.entities;
 
+import es.code.urjc.ibercomponents.controllers.OrdersController;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -11,18 +14,20 @@ import javax.persistence.Entity;
 @Table(name = "ShoppingCart")
 public class ShoppingCart {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
     @Column(name = "productos")
-    @OneToMany
+    @ManyToMany
     private List<Product> products;
 
 
     private double sumProductPrices;
 
-    public ShoppingCart() {}
+    public ShoppingCart() {
+        products = new ArrayList<>();
+    }
 
     public ShoppingCart(long id) {
         this.id = id;
@@ -33,6 +38,8 @@ public class ShoppingCart {
     public ShoppingCart(List<Product> products, String address)
     {
         this.sumProductPrices = 0;
+
+        products = new ArrayList<>();
 
     }
 
@@ -46,6 +53,14 @@ public class ShoppingCart {
     {
         if(product!= null)
             products.remove(product);
+    }
+
+    public void copyProducts(ShoppingCart shoppingCart)
+    {
+        for (int i = 0; i < shoppingCart.getProducts().size(); i++)
+        {
+            this.products.add(shoppingCart.products.get(i));
+        }
     }
 
     public void deleteAllProducts()

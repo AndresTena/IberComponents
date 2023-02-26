@@ -8,14 +8,19 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "id")
+    private long id;
 
     @OneToMany
     private List<ShoppingCart> shoppingCarts;
 
     public Order()
     {}
+
+    public Order (long id)
+    {
+        this.id = id;
+    }
 
     public void addShoppingCart(ShoppingCart s)
     {

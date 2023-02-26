@@ -37,7 +37,7 @@ public class Product
     private List<Review> reviews;
 
 
-    public Product(String name, String descipcion, double d, int i, String features, boolean imageBool) {
+    public Product(String name, String descipcion, double d, double i, String features, boolean imageBool) {
         this.name = name;
         this.description = descipcion;
         this.score = d;

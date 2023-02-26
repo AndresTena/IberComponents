@@ -19,7 +19,7 @@
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body">Carrito<i
+                <h5 class="mb-3"><a href="#!" class="text-body">Pedidos Realizados<i
                         class="fas fa-long-arrow-alt-left me-2"></i></a></h5>
                 <hr>
 
@@ -33,7 +33,9 @@
                   </div>
                 </div>
 
-                {{#user.cart.getProducts}}
+                {{#order.shoppingCarts}}
+
+                {{#products}}
                 <div class="card mb-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -41,10 +43,10 @@
                         <div>
                           <img
                                   src="/images/{{id}}.png"
-                                  class="img-fluid rounded-3" alt="Shopping item" style="width: 500px;">
+                                  class="img-fluid rounded-3" alt="Shopping item" style="width: 300px;">
                         </div>
                         <div class="ms-3">
-                          <h5>{{name}}</h5>
+                          <h5></h5>
                           <p class="small mb-0">{{description}}</p>
                         </div>
                       </div>
@@ -57,25 +59,24 @@
                         </div>
 
                         <div style="width: 80px;">
-                          <h5 class="mb-0">Score: {{score}}</h5>
+                          <h5 class="mb-0">Score:{{score}}</h5>
                         </div>
 
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-
-                        <form action="/deleteProductShoppingCart/{{id}}" method="post" enctype="multipart/form-data">
-                          <input class="btn btn-outline-danger mt-auto" type="submit" value="delete"/>
-                          </form>
                       </div>
                     </div>
                   </div>
                 </div>
-                {{/user.cart.getProducts}}
+                {{/products}}
+
+
+                <br>
+                <hr>
+                <br>
+                {{/order.shoppingCarts}}
 
               </div>
-
-              <form action="/deleteProductsShoppingCart" method="get" enctype="multipart/form-data">
-                <input class="w-100 btn btn-lg btn-primary" type="submit" value="Comprar   Coste: {{user.cart.getSumProductPrices}}"/>
-              </form></H1>
+                </H1>
 
             </div>
 
