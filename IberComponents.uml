@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/jose/Documents/GitHub/IberComponents/IberComponents/src</OriginalElement>
+  <nodes>
+    <node x="-51.25" y="309.0">es.code.urjc.ibercomponents.entities.Order</node>
+    <node x="750.25" y="566.0">es.code.urjc.ibercomponents.controllers.GreetingController</node>
+    <node x="26.5" y="44.0">es.code.urjc.ibercomponents.repositories.OrderRepository</node>
+    <node x="742.75" y="447.0">es.code.urjc.ibercomponents.services.ShoppingCartService</node>
+    <node x="509.75" y="358.0">es.code.urjc.ibercomponents.repositories.ProductRepository</node>
+    <node x="237.25" y="-15.0">es.code.urjc.ibercomponents.services.ReviewService</node>
+    <node x="98.75" y="447.0">es.code.urjc.ibercomponents.services.UserService</node>
+    <node x="-84.25" y="191.0">es.code.urjc.ibercomponents.entities.ShoppingCart</node>
+    <node x="-101.25" y="250.0">es.code.urjc.ibercomponents.entities.User</node>
+    <node x="521.75" y="447.0">es.code.urjc.ibercomponents.services.ProductService</node>
+    <node x="751.75" y="358.0">es.code.urjc.ibercomponents.repositories.ShoppingCartRepository</node>
+    <node x="254.75" y="447.0">es.code.urjc.ibercomponents.IberComponentsApplication</node>
+    <node x="513.25" y="566.0">es.code.urjc.ibercomponents.controllers.ShoppingCartController</node>
+    <node x="423.25" y="44.0">es.code.urjc.ibercomponents.IberComponentsApplicationTests</node>
+    <node x="-61.25" y="-15.0">es.code.urjc.ibercomponents.entities.Review</node>
+    <node x="86.75" y="358.0">es.code.urjc.ibercomponents.repositories.UserRepository</node>
+    <node x="-39.0" y="93.0">es.code.urjc.ibercomponents.entities.Product</node>
+    <node x="225.25" y="44.0">es.code.urjc.ibercomponents.repositories.ReviewRepository</node>
+    <node x="89.25" y="566.0">es.code.urjc.ibercomponents.controllers.UserController</node>
+    <node x="72.25" y="-15.0">es.code.urjc.ibercomponents.services.OrderService</node>
+    <node x="120.5" y="142.0">es.code.urjc.ibercomponents.controllers.OrdersController</node>
+    <node x="-158.0" y="566.0">es.code.urjc.ibercomponents.controllers.ProductController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="es.code.urjc.ibercomponents.controllers.OrdersController" target="es.code.urjc.ibercomponents.services.OrderService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="200.5" y="34.0" />
+      <point x="173.5" y="34.0" />
+      <point x="33.75" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ProductController" target="es.code.urjc.ibercomponents.entities.Review" relationship="CREATE">
+      <point x="-41.75" y="-14.5" />
+      <point x="-116.25" y="48.5" />
+      <point x="-37.0" y="48.5" />
+      <point x="-24.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.services.OrderService" target="es.code.urjc.ibercomponents.repositories.OrderRepository" relationship="TO_ONE">
+      <point x="-33.75" y="14.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.GreetingController" target="es.code.urjc.ibercomponents.services.ProductService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="836.75" y="506.0" />
+      <point x="595.75" y="506.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.GreetingController" target="es.code.urjc.ibercomponents.services.UserService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="836.75" y="526.0" />
+      <point x="161.75" y="526.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.entities.User" target="es.code.urjc.ibercomponents.entities.ShoppingCart" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="-61.75" y="240.0" />
+      <point x="-49.0" y="240.0" />
+      <point x="-35.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.entities.Order" target="es.code.urjc.ibercomponents.entities.ShoppingCart" relationship="TO_MANY">
+      <point x="0.0" y="-14.5" />
+      <point x="-7.25" y="240.0" />
+      <point x="-49.0" y="240.0" />
+      <point x="-35.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ShoppingCartController" target="es.code.urjc.ibercomponents.services.UserService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="616.75" y="536.0" />
+      <point x="161.75" y="536.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.entities.Product" target="es.code.urjc.ibercomponents.entities.Review" relationship="TO_MANY">
+      <point x="0.0" y="-14.5" />
+      <point x="24.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.entities.User" relationship="CREATE">
+      <point x="-59.25" y="-14.5" />
+      <point x="314.0" y="437.0" />
+      <point x="71.75" y="437.0" />
+      <point x="71.75" y="427.0" />
+      <point x="-66.25" y="427.0" />
+      <point x="-66.25" y="299.0" />
+      <point x="-61.75" y="299.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.services.ShoppingCartService" target="es.code.urjc.ibercomponents.repositories.ShoppingCartRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="836.75" y="407.0" />
+      <point x="857.75" y="407.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.services.UserService" target="es.code.urjc.ibercomponents.repositories.UserRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ProductController" target="es.code.urjc.ibercomponents.services.ProductService" relationship="TO_ONE">
+      <point x="41.75" y="-14.5" />
+      <point x="-32.75" y="556.0" />
+      <point x="595.75" y="556.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.entities.ShoppingCart" target="es.code.urjc.ibercomponents.entities.Product" relationship="TO_MANY">
+      <point x="0.0" y="-14.5" />
+      <point x="-25.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.repositories.ProductRepository" relationship="TO_ONE">
+      <point x="59.25" y="-14.5" />
+      <point x="432.5" y="437.0" />
+      <point x="857.75" y="437.0" />
+      <point x="857.75" y="417.0" />
+      <point x="595.75" y="417.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.entities.ShoppingCart" relationship="CREATE">
+      <point x="-59.25" y="-14.5" />
+      <point x="314.0" y="437.0" />
+      <point x="71.75" y="437.0" />
+      <point x="71.75" y="427.0" />
+      <point x="51.75" y="427.0" />
+      <point x="51.75" y="254.5" />
+      <point x="21.5" y="254.5" />
+      <point x="35.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.repositories.ShoppingCartRepository" relationship="TO_ONE">
+      <point x="59.25" y="-14.5" />
+      <point x="432.5" y="437.0" />
+      <point x="857.75" y="437.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.services.ProductService" target="es.code.urjc.ibercomponents.repositories.ProductRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ProductController" target="es.code.urjc.ibercomponents.services.UserService" relationship="TO_ONE">
+      <point x="41.75" y="-14.5" />
+      <point x="-32.75" y="556.0" />
+      <point x="595.75" y="556.0" />
+      <point x="595.75" y="546.0" />
+      <point x="161.75" y="546.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.repositories.UserRepository" relationship="TO_ONE">
+      <point x="59.25" y="-14.5" />
+      <point x="432.5" y="437.0" />
+      <point x="857.75" y="437.0" />
+      <point x="857.75" y="427.0" />
+      <point x="161.75" y="427.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ShoppingCartController" target="es.code.urjc.ibercomponents.services.ShoppingCartService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="616.75" y="496.0" />
+      <point x="836.75" y="496.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.ShoppingCartController" target="es.code.urjc.ibercomponents.services.ProductService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="616.75" y="516.0" />
+      <point x="595.75" y="516.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.UserController" target="es.code.urjc.ibercomponents.services.UserService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.IberComponentsApplication" target="es.code.urjc.ibercomponents.entities.Product" relationship="CREATE">
+      <point x="-59.25" y="-14.5" />
+      <point x="314.0" y="437.0" />
+      <point x="71.75" y="437.0" />
+      <point x="71.75" y="146.5" />
+      <point x="36.75" y="146.5" />
+      <point x="25.25" y="14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.services.ReviewService" target="es.code.urjc.ibercomponents.repositories.ReviewRepository" relationship="TO_ONE">
+      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="es.code.urjc.ibercomponents.controllers.GreetingController" target="es.code.urjc.ibercomponents.services.ShoppingCartService" relationship="TO_ONE">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.1166374781085815" showDependencies="true" x="496.6439774153074" y="341.8219887076537" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
