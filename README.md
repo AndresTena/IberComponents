@@ -30,3 +30,46 @@ Review ✨: puntuación de los usuarios sobre un producto
 Envío de correo electrónico al crear cuenta para confirmar
 
 Envio de correo electrónico con el pedido realizado 
+
+## Fase 2
+### Capturas de pantalla de la aplicación
+![alt imagen 1](https://github.com/AndresTena/IberComponents/blob/main/Imagen1.png)
+
+
+Página principal, en la cual se exponen los productos disponibles para adquirir.
+
+
+![alt imgagen 2](https://github.com/AndresTena/IberComponents/blob/main/Imagen2.png)
+
+
+Página desde la cual se puede “logear” el usuario, es decir, dicha página se utilizará cuando el usuario ya esté previamente registrado. Se necesitará un usuario y una contraseña.
+
+
+![alt imgagen 3](https://github.com/AndresTena/IberComponents/blob/main/Imagen3.png)
+
+
+Si es la primera vez que el usuario entra en la página, este utilizará esta página para registrarse. Para ello será necesario un nombre, una dirección de correo y una contraseña.
+
+
+![alt imgagen 4](https://github.com/AndresTena/IberComponents/blob/main/Imagen4.png)
+
+
+ Página diseñada para añadir un nuevo producto a la página para el cual habrá que definir su nombre, descripción, características, precio e imagen si es que la tiene.
+
+
+![alt imgagen 5](https://github.com/AndresTena/IberComponents/blob/main/Imagen5.png)
+
+
+Página que muestra los detalles del producto seleccionado en la página principal, en dicha página se podrá añadir el producto al carrito.
+
+
+![alt imgagen 6](https://github.com/AndresTena/IberComponents/blob/main/Imagen6.png)
+
+
+Página que muestra los productos añadidos al carrito.
+
+
+![alt imgagen 7](https://github.com/AndresTena/IberComponents/blob/main/imagen7.PNG)
+
+
+ Página que muestra todos los pedidos que se ha realizado en la página web
