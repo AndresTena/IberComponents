@@ -35,8 +35,10 @@
 
                 {{#order.shoppingCarts}}
 
+                Pedido {{-index}}
+                <br>
                 {{#products}}
-                <div class="card mb-3">
+                <div class="card mb-5">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
@@ -55,11 +57,11 @@
                           <h5 class="fw-normal mb-0"></h5>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">{{price}} EUR</h5>
+                          <p class="mb-1">{{price}} EUR</p>
                         </div>
 
                         <div style="width: 80px;">
-                          <h5 class="mb-0">Score:{{score}}</h5>
+                          <p class="mb-0">Score:{{score}}</p>
                         </div>
 
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>

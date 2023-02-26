@@ -7,16 +7,14 @@ public class Review {
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private Long id ;
+    private long id ;
 
     @Column(name = "score", length = 100)
-    private int score;
-
-    @Column(length = 10000, name = "comment")
-    private String comment;
+    private long score;
 
 
-    public Review(int score) {
+
+    public Review(long score) {
         this.score = score;
     }
 
@@ -24,19 +22,12 @@ public class Review {
 
     }
 
-    public int getScore(){
+    public long getScore(){
         return this.score;
-    }
-
-    public String getComment(){
-        return this.comment;
     }
 
     public void setScore(int score){
         this.score = score;
     }
 
-    public void setComment(String comment){
-        this.comment = comment;
-    }
 }

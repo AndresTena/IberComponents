@@ -7,6 +7,7 @@ import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.ProductService;
+import es.code.urjc.ibercomponents.services.ReviewService;
 import es.code.urjc.ibercomponents.services.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,10 @@ public class ProductController {
     @Autowired
     private UserService userService;
 
+
+    @Autowired
+    private ReviewService reviewService;
+
     @RequestMapping("/product/{id}")
     public String getProduct(Model model, @PathVariable long id)
     {
@@ -48,6 +53,7 @@ public class ProductController {
 
         if(product.isPresent()) {
             model.addAttribute("product", product.get());
+            model.addAttribute("reviewsSize", product.get().getReviews().size());
             return "product";
         }else {
             return "index";
@@ -116,14 +122,16 @@ public class ProductController {
     }
 
 
-    @PutMapping("/newReview/{id}")
-    public String newReviewProcess(@PathVariable long id) {
+    @GetMapping("/newReview/{id}")
+    public String newReviewProcess(@PathVariable long id, @RequestParam long score) {
 
         Optional<Product> product = productService.findById(id);
         if(product.isPresent()) {
-            Review review = new Review((int) product.get().getScore());
+            Review review = new Review(score);
+            reviewService.save(review);
             product.get().addReview(review);
-            product.get().setScore(product.get().getReviewsMean());
+            //product.get().setScore(product.get().getReviewsMean());
+            product.get().getReviewsMean();
             productService.save(product.get());
 
         }

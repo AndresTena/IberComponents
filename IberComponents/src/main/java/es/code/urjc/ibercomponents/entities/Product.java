@@ -56,6 +56,17 @@ public class Product
     }
 
 
+    public Product(String name, String descipcion, double d, double i, String features, boolean imageBool, Review review) {
+        this.name = name;
+        this.description = descipcion;
+        this.score = d;
+        this.price = i;
+        this.features = features;
+        this.imageBool = imageBool;
+        this.reviews = new ArrayList<Review>();
+        this.reviews.add(review);
+    }
+
     public Product() {
 
     }
@@ -115,12 +126,14 @@ public class Product
 
     public void addReview(Review review){this.reviews.add(review);}
 
-    private static float getAverage(List<Review> list) {
+    private float getAverage(List<Review> list) {
         long sum = 0;
         for (Review i: list) {
             sum += i.getScore();
         }
-        return list.size() > 0 ? (float) sum / list.size() : 0;
+        this.score = sum /list.size();
+        return sum/ list.size();
+        //return list.size() > 0 ? (float) sum / list.size() : 0;
     }
 
     public float getReviewsMean()
