@@ -85,3 +85,7 @@ Página que muestra los productos añadidos al carrito.
 
 
 ![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/IberComponents.png)
+
+### Modelo Entidad-Relacion
+
+![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/Entidad-Relacion-DAW.png)
