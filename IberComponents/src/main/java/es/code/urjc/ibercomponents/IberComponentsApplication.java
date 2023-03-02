@@ -76,9 +76,31 @@ public class IberComponentsApplication implements CommandLineRunner {
                         "LAN para juegos 8118 exclusiva de GIGABYTE con gestión de ancho de banda", true, review2
         );
 
+
+        Review review4 = new Review(5);
+
+
+
+        Product product4= new Product("Kingston FURY Beast DDR4 3200 MHz 16GB 2x8GB CL16",
+                "La memoria para PC FURY Beast DDR4 de Kingston ofrece un potente aumento de rendimiento" +
+                        " para juegos, edición de vídeo y renderización con velocidades de hasta 3733 MHz. Esta rent" +
+                        "able actualización está disponible en velocidades de 2666 MHz a 3733 MHz, con latencias de " +
+                        "CL15 a 19, capacidades de 4 GB a 32 GB en módulos individuales y de 8 GB a 128 GB en kits. Su" +
+                        " overclocking automático Plug N Play a velocidades de 2666 MHz está disponible en Intel XMP y" +
+                        " Ryzen. El módulo FURY Beast DDR4 se mantiene fresco gracias a su elegante y delgado disipador" +
+                        " de calor. Probada al   100% y garantizada de por vida, esta actualización es muy fácil y sin " +
+                        "problemas para tu sistema Intel o AMD.0", review1.getScore(), 48.99,
+                "Diseño delgado del disipador térmico\n" +
+                        "Actualización rentable de DDR4 de alto rendimiento\n" +
+                        "Compatible con Intel XMP\n" +
+                        "Compatible con AMD Ryzen", true , review4);
+
+        reviewRepository.save(review4);
+
         productRepository.save(product);
         productRepository.save(product2);
         productRepository.save(product3);
+        productRepository.save(product4);
 
 
 

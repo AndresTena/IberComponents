@@ -43,4 +43,13 @@ public class UserController {
         return "/";
 
     }
+
+    @GetMapping("/loginError")
+    public String loginError(Model model)
+    {
+
+
+        return "loginError";
+
+    }
 }
