@@ -130,7 +130,6 @@ public class ProductController {
             Review review = new Review(score);
             reviewService.save(review);
             product.get().addReview(review);
-            //product.get().setScore(product.get().getReviewsMean());
             product.get().getReviewsMean();
             productService.save(product.get());
 

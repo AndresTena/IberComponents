@@ -73,3 +73,19 @@ Página que muestra los productos añadidos al carrito.
 
 
  Página que muestra todos los pedidos que se ha realizado en la página web
+ 
+ 
+ ### Diagrama de navegración
+ 
+ 
+![alt diagrama de navegacion](https://github.com/AndresTena/IberComponents/blob/main/DiagramaNavegacion.png)
+
+
+### Diagrama de UML
+
+
+![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/IberComponents.png)
+
+### Modelo Entidad-Relacion
+
+![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/Entidad-Relacion-DAW.png)
