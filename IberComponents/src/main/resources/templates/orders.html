@@ -43,9 +43,17 @@
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
                         <div>
+                          {{#imageBool}}
                           <img
-                                  src="/images/{{id}}.png"
+                                  src="/download_image/{{id}}"
                                   class="img-fluid rounded-3" alt="Shopping item" style="width: 300px;">
+                          {{/imageBool}}
+
+                          {{^imageBool}}
+                          <img
+                                  src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                  class="img-fluid rounded-3" alt="Shopping item" style="width: 300px;">
+                          {{/imageBool}}
                         </div>
                         <div class="ms-3">
                           <h5></h5>

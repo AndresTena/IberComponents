@@ -11,11 +11,15 @@ import es.code.urjc.ibercomponents.services.ReviewService;
 import es.code.urjc.ibercomponents.services.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.core.io.Resource;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -73,7 +77,7 @@ public class ProductController {
 
 
     @PostMapping("/newProduct")
-    public String newProductProcess(Model model, Product product, String imageName, MultipartFile image) throws IOException {
+    public String newProductProcess(Model model, Product product, MultipartFile image) throws IOException {
 
         if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
         {
@@ -98,7 +102,15 @@ public class ProductController {
 
     }
 
+    @GetMapping("/download_image/{id}")
+    public ResponseEntity<Object> downloadImage(Model model, @PathVariable long id) throws MalformedURLException {
 
+        Path imagePath = IMAGES_FOLDER.resolve(id + ".png");
+
+        Resource image = new UrlResource(imagePath.toUri());
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/" + id + "png").body(image);
+    }
 
 
     @PostMapping("/deleteProduct/{id}")
