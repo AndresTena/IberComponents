@@ -1,32 +1,39 @@
 package es.code.urjc.ibercomponents.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.security.SecureRandom;
+
 @Configuration
-public class SecureConfiguration extends WebSecurityConfigurerAdapter
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
-    @Value("${security.user}")
-    private String user;
+    @Autowired
+    RepositoryUserDetailsService userDetailsService;
 
-    @Value("${security.encodedPassword}")
-    private String encodedPassword;
 
-    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10, new SecureRandom());
+    }
+
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        String encodedPassword = encoder.encode("pass");
-        auth.inMemoryAuthentication().withUser("user").password(encodedPassword).roles("USER");
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
 
     protected void configure(HttpSecurity http) throws Exception
     {
+
+        /*
 
         //paginas publicas
         http.authorizeRequests().antMatchers("/").permitAll();
@@ -36,7 +43,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter
 
         //paginas privadas
         http.authorizeRequests().anyRequest().authenticated();
-        http.authorizeRequests().antMatchers("/newProduct").hasAnyRole("ADMIN");
+        //http.authorizeRequests().antMatchers("/newProduct").hasAnyRole("ADMIN");
 
 
         // Login form
@@ -46,12 +53,16 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter
         http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/loginError");
 
+
         // Logout
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
 
         // Disable CSRF at the moment
         http.csrf().disable();
+
+
+         */
     }
 
 }

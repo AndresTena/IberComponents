@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class IberComponentsApplication implements CommandLineRunner {
@@ -27,10 +28,12 @@ public class IberComponentsApplication implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void run(String... args) throws Exception
     {
-
 
         Review review = new Review(3);
         Review review1 = new Review(4);
@@ -95,6 +98,12 @@ public class IberComponentsApplication implements CommandLineRunner {
                         "Compatible con Intel XMP\n" +
                         "Compatible con AMD Ryzen", true , review4);
 
+        ShoppingCart shoppingCart = new ShoppingCart(1);
+
+        User admin = new User(2,"admin", passwordEncoder.encode("adminpassword"), shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es", 5000 );
+        userRepository.save(admin);
+
+
         reviewRepository.save(review4);
 
         productRepository.save(product);
@@ -104,17 +113,15 @@ public class IberComponentsApplication implements CommandLineRunner {
 
 
 
-        ShoppingCart shoppingCart = new ShoppingCart(1);
 
 
 
 
 
-        User admin = new User(1,"admin", "admin", shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es", 5000 );
+
 
         Order order = new Order(1);
         orderRepository.save(order);
-        userRepository.save(admin);
         shoppingCartRepository.save(shoppingCart);
     }
 }

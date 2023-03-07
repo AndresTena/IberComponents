@@ -29,7 +29,7 @@ public class GreetingController {
     @GetMapping("/")
     public String home(Model model)
     {
-        Optional<User> user = userService.findById(1);
+        Optional<User> user = userService.findById(5);
         if(user!=null)
         {
             model.addAttribute("userExists", true);
