@@ -16,6 +16,8 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter
 
     @Value("${security.encodedPassword}")
     private String encodedPassword;
+
+    
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         String encodedPassword = encoder.encode("pass");
@@ -34,6 +36,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter
 
         //paginas privadas
         http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/newProduct").hasAnyRole("ADMIN");
 
 
         // Login form

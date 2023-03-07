@@ -1,22 +1,30 @@
 package es.code.urjc.ibercomponents.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
 
     @Id
-    //@GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
     private String name;
+
+    @JsonIgnore
     private String user_password;
     private Boolean user_admin;
 
     private String gmail;
 
     private double money;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -25,7 +33,7 @@ public class User {
     public User() {
     }
 
-    public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail, double money) {
+    public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail, double money, String ...roles) {
         this.name = user_name;
         this.user_password = user_password;
         this.cart = cart;
@@ -33,6 +41,7 @@ public class User {
         this.gmail = gmail;
         this.id = id;
         this.money = money;
+        this.roles = List.of(roles);
     }
 
     public ShoppingCart getCart() {
@@ -85,5 +94,9 @@ public class User {
 
     public void setGmail(String gmail) {
         this.gmail = gmail;
+    }
+
+    public List<String> getRoles() {
+        return roles;
     }
 }
