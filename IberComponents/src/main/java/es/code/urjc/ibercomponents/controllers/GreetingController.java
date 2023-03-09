@@ -42,6 +42,7 @@ public class GreetingController {
             if(user!= null)
             {
                 model.addAttribute("money",user.get().getMoney());
+                model.addAttribute("getProducts", user.get().getCart());
             }
         } else {
             model.addAttribute("userExists", false);

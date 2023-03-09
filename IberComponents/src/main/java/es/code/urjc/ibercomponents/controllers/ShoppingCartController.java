@@ -39,14 +39,14 @@ public class ShoppingCartController {
     @GetMapping("/shoppingCart")
     public String shoppingCart(Model model)
     {
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
-        model.addAttribute("shoppingCart");
         return "shoppingCart";
     }
 
+    @GetMapping("/shoppingCartError")
+    public String shoppingCartError()
+    {
+        return "shoppingCartError";
+    }
 
 
     @GetMapping("/deleteProductsShoppingCart")
