@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 @Controller
-public class UserController {
+public class LoginController {
 
     @Autowired
     private UserService userService;
@@ -26,8 +26,6 @@ public class UserController {
 
     @GetMapping("/signin")
     public String signin(Model model) {
-
-        model.addAttribute("name", "Mundo");
 
         return "sign-in";
     }
@@ -47,9 +45,6 @@ public class UserController {
     @GetMapping("/loginError")
     public String loginError(Model model)
     {
-
-
         return "loginError";
-
     }
 }

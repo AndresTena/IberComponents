@@ -33,8 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception
     {
 
-        /*
-
         //paginas publicas
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/shoppingCart").permitAll();
@@ -42,8 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         http.authorizeRequests().antMatchers("/").permitAll();
 
         //paginas privadas
-        http.authorizeRequests().anyRequest().authenticated();
-        //http.authorizeRequests().antMatchers("/newProduct").hasAnyRole("ADMIN");
+        //http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/newProduct").hasAnyRole("ADMIN");
 
 
         // Login form
@@ -62,7 +60,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         http.csrf().disable();
 
 
-         */
     }
 
 }

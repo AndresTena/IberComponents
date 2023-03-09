@@ -29,6 +29,16 @@ public class UserService {
         repository.save(product);
     }
 
+    public Optional<User> findByName(String name)
+    {
+        List <User> users = findAll();
+        for(User user: users)
+        {
+            if(user.getUserName() == name)
+                return Optional.of(user);
+        }
+        return null;
+    }
     public void delete(User product)
     {
         repository.delete(product);

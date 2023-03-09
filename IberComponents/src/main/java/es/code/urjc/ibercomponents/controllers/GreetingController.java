@@ -1,5 +1,6 @@
 package es.code.urjc.ibercomponents.controllers;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class GreetingController {
@@ -23,20 +27,29 @@ public class GreetingController {
     private UserService userService;
 
 
-    @Autowired
-    private ShoppingCartService shoppingCart;
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
 
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+
+            model.addAttribute("userExists", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+            Optional<User> user = userService.findByName(principal.getName())   ;
+            if(user!= null)
+            {
+                model.addAttribute("money",user.get().getMoney());
+            }
+        } else {
+            model.addAttribute("userExists", false);
+        }
+    }
     @GetMapping("/")
     public String home(Model model)
     {
-        Optional<User> user = userService.findById(5);
-        if(user!=null)
-        {
-            model.addAttribute("userExists", true);
-            model.addAttribute("user", user.get());
-        }else {
-            model.addAttribute("userExists", false);
-        }
     List<Product> productList = productService.findAll();
         if (productList != null)
         {

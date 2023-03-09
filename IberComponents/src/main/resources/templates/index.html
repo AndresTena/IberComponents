@@ -43,12 +43,11 @@
                             <div class = "text-center">
 
                                 {{#userExists}}
-                                {{#user.user_admin}}
+                                {{#admin}}
                                 <form action="/deleteProduct/{{id}}" method="post" enctype="multipart/form-data">
                                     <input class="btn btn-outline-danger mt-auto" type="submit" value="delete"/>
-                                <!--<div class="text-center"><a class="btn btn-outline-danger mt-auto">eliminar Producto</a></div>
-                                --></form>
-                                    {{/user.user_admin}}
+                                </form>
+                                    {{/admin}}
                                 {{/userExists}}
                             </div>
                         </div>

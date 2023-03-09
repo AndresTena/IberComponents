@@ -48,11 +48,6 @@ public class ProductController {
     @RequestMapping("/product/{id}")
     public String getProduct(Model model, @PathVariable long id)
     {
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
-
         Optional<Product> product = productService.findById(id);
 
         if(product.isPresent()) {
