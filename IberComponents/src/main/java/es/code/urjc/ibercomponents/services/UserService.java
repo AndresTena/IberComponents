@@ -34,7 +34,7 @@ public class UserService {
         List <User> users = findAll();
         for(User user: users)
         {
-            if(user.getUserName() == name)
+            if(user.getName() == name)
                 return Optional.of(user);
         }
         return null;

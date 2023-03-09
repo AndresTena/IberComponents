@@ -19,7 +19,6 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        model.addAttribute("name", "Mundo");
 
         return "login";
     }
@@ -33,12 +32,13 @@ public class LoginController {
     @PostMapping("/signin")
     public String signInProcess(Model model, User user) throws IOException
     {
-        userService.save(user);
+        if(user.getName() != null && user.getGmail() != null && user.getPassword() != null) {
+            userService.save(user);
 
-        model.addAttribute("User", user);
+            //model.addAttribute("User", user);
+        }
 
-
-        return "/";
+        return "redirect:/";
 
     }
 

@@ -16,8 +16,8 @@ public class User {
     private String name;
 
     @JsonIgnore
-    private String user_password;
-    private Boolean user_admin;
+    private String password;
+    private Boolean userAdmin;
 
     private String gmail;
 
@@ -35,9 +35,9 @@ public class User {
 
     public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail, double money, String ...roles) {
         this.name = user_name;
-        this.user_password = user_password;
+        this.password = user_password;
         this.cart = cart;
-        this.user_admin = user_admin;
+        this.userAdmin = user_admin;
         this.gmail = gmail;
         this.id = id;
         this.money = money;
@@ -45,9 +45,9 @@ public class User {
     }
     public User(long id,String user_name, String user_password, ShoppingCart cart, Boolean user_admin, String gmail, double money) {
         this.name = user_name;
-        this.user_password = user_password;
+        this.password = user_password;
         this.cart = cart;
-        this.user_admin = user_admin;
+        this.userAdmin = user_admin;
         this.gmail = gmail;
         this.id = id;
         this.money = money;
@@ -58,20 +58,20 @@ public class User {
         return cart;
     }
 
-    public String getUserName() {
+    public String getName() {
         return name;
     }
 
-    public void setUserName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getUserPassword() {
-        return user_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String password) {
-        this.user_password = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public ShoppingCart getShoppingCart() {
@@ -90,12 +90,12 @@ public class User {
         this.money = money;
     }
 
-    public boolean getUserAdmin() {
-        return user_admin;
+    public boolean getAdmin() {
+        return userAdmin;
     }
 
-    public void setUserAdmin(Boolean UserAdmin) {
-        this.user_admin = user_admin;
+    public void setAdmin(Boolean UserAdmin) {
+        this.userAdmin = userAdmin;
     }
 
     public String getGmail() {
