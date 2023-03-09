@@ -19,10 +19,13 @@
           <p class="card-text">{{product.description}}            </p>
           <p class = "card-text"><ol>{{product.features}}</ol></p>
 
+          {{#userExists}}
           <form action="/addProduct/{{product.id}}" method="get" enctype="multipart/form-data">
             <input class="btn btn-primary" href="/shoppingCart" type="submit" value="Añadir al carrito"/>
           </form>
+          {{/userExists}}
 
+          <p class = "btn btn-outline-danger">{{product.price}} EUR</p>
           <H1>
             <form action="/newReview/{{id}}" method="get" enctype="multipart/form-data">
             <p class="clasificacion">
@@ -39,8 +42,11 @@
             </p>
               <p class="punt">Valoración media: {{product.score}}</p>
               <p class = "d-flex">Total Reviews: {{reviewsSize}}</p>
+              {{#userExists}}}}
             <input class="w-100 btn btn-lg btn-primary" type="submit" value="Valorar"/>
-          </form></H1>
+              {{/userExists}}
+          </form>
+          </H1>
 
           {{#userExists}}
           {{#user.user_admin}}

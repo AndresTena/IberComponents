@@ -41,4 +41,11 @@ public class OrdersController
         }
         return "/";
     }
+
+    @GetMapping("/orderError")
+    public String orderError()
+    {
+        return "orderError";
+    }
+
 }
