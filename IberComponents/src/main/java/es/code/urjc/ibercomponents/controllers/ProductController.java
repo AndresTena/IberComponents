@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.core.io.Resource;
+
+import javax.servlet.http.HttpServletRequest;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,6 +29,7 @@ import java.nio.file.Paths;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +47,31 @@ public class ProductController {
 
     @Autowired
     private ReviewService reviewService;
+
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+
+            model.addAttribute("userExists", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+            Optional<User> user = userService.findByName(principal.getName())   ;
+            System.out.println(user.isPresent());
+            if(user!= null)
+            {
+                System.out.println("hola");
+                model.addAttribute("money",user.get().getMoney());
+                model.addAttribute("getProducts", user.get().getCart());
+            }
+        } else {
+            model.addAttribute("userExists", false);
+        }
+    }
 
     @RequestMapping("/product/{id}")
     public String getProduct(Model model, @PathVariable long id)

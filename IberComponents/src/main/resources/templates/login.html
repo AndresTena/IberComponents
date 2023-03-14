@@ -81,16 +81,22 @@
     <h1 class="h3 mb-3 fw-normal">Login</h1>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="gmail" name = "gmail" placeholder="gmail">
-      <label for="gmail">nombre de usuario</label>
+      <input type="text" class="form-control" id="name" name = "name" placeholder="name">
+      <label for="name">Nombre de usuario</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="password" name="password" placeholder="user_password">
+      <input type="password" class="form-control" id="password" name="password" placeholder="password">
       <label for="password">Contraseña</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="location.href='/'; return false;" value="Save">Cancel</button>
-    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login"/>
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login"/><br />
   </form>
+  {{#failLogin}}
+  <div class="row gx-4 ">
+    <h5>El usuario o la contraseña son incorrectos.</h5>
+
+  </div>
+  {{/failLogin}}
 </main>
 
 </body>

@@ -29,16 +29,7 @@ public class UserService {
         repository.save(product);
     }
 
-    public Optional<User> findByName(String name)
-    {
-        List <User> users = findAll();
-        for(User user: users)
-        {
-            if(user.getName() == name)
-                return Optional.of(user);
-        }
-        return null;
-    }
+    public Optional<User> findByName(String name) {return repository.findByName(name);}
     public void delete(User product)
     {
         repository.delete(product);

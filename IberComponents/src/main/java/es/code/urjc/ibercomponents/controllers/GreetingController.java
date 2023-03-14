@@ -32,6 +32,7 @@ public class GreetingController {
 
         Principal principal = request.getUserPrincipal();
 
+        //System.out.println(principal.getName());
         if (principal != null) {
 
             model.addAttribute("userExists", true);
@@ -39,8 +40,10 @@ public class GreetingController {
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
             Optional<User> user = userService.findByName(principal.getName())   ;
+            System.out.println(user.isPresent());
             if(user!= null)
             {
+                System.out.println("hola");
                 model.addAttribute("money",user.get().getMoney());
                 model.addAttribute("getProducts", user.get().getCart());
             }
@@ -48,6 +51,7 @@ public class GreetingController {
             model.addAttribute("userExists", false);
         }
     }
+
     @GetMapping("/")
     public String home(Model model)
     {

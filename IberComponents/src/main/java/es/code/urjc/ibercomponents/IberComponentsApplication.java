@@ -100,7 +100,7 @@ public class IberComponentsApplication implements CommandLineRunner {
 
         ShoppingCart shoppingCart = new ShoppingCart(1);
 
-        User admin = new User(2,"admin", passwordEncoder.encode("adminpassword"), shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es", 5000 );
+        User admin = new User(2,"admin", passwordEncoder.encode("adminpassword"), shoppingCart,true, "a.delgadog.2019@alumnos.urjc.es", 5000, "USER", "ADMIN" );
         userRepository.save(admin);
 
 

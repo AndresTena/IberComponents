@@ -9,14 +9,13 @@ import es.code.urjc.ibercomponents.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import es.code.urjc.ibercomponents.services.ShoppingCartService;
 import es.code.urjc.ibercomponents.services.UserService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +35,31 @@ public class ShoppingCartController {
 
     @Autowired
     private ProductService productService;
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+
+            model.addAttribute("userExists", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+            Optional<User> user = userService.findByName(principal.getName())   ;
+            System.out.println(user.isPresent());
+            if(user!= null)
+            {
+                System.out.println("hola");
+                model.addAttribute("money",user.get().getMoney());
+                model.addAttribute("getProducts", user.get().getCart());
+            }
+        } else {
+            model.addAttribute("userExists", false);
+        }
+    }
+
     @GetMapping("/shoppingCart")
     public String shoppingCart(Model model)
     {
