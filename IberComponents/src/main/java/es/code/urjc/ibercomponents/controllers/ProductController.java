@@ -49,6 +49,7 @@ public class ProductController {
     private ReviewService reviewService;
 
 
+    private Optional<User> user;
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -60,7 +61,7 @@ public class ProductController {
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
-            Optional<User> user = userService.findByName(principal.getName())   ;
+            user = userService.findByName(principal.getName())   ;
             System.out.println(user.isPresent());
             if(user!= null)
             {
@@ -137,10 +138,10 @@ public class ProductController {
 
 
     @PostMapping("/deleteProduct/{id}")
-    public String deleteProduct(Model model, @PathVariable String id)
+    public String deleteProduct(Model model, @PathVariable String id, HttpServletRequest request)
     {
+
         Optional<Product> product = productService.findById(Long.parseLong(id));
-        Optional<User> user = userService.findById(1);
         if(user!=null) {
             model.addAttribute("user", user.get());
         }

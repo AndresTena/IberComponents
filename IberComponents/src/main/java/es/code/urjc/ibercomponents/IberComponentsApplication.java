@@ -2,7 +2,6 @@ package es.code.urjc.ibercomponents;
 
 import es.code.urjc.ibercomponents.entities.*;
 import es.code.urjc.ibercomponents.repositories.*;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

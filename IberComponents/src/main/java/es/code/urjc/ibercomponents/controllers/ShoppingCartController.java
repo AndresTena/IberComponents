@@ -36,6 +36,8 @@ public class ShoppingCartController {
     @Autowired
     private ProductService productService;
 
+    private Optional<User> user;
+
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -47,13 +49,15 @@ public class ShoppingCartController {
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
-            Optional<User> user = userService.findByName(principal.getName())   ;
+
+            user = userService.findByName(principal.getName())   ;
             System.out.println(user.isPresent());
             if(user!= null)
             {
                 System.out.println("hola");
+                model.addAttribute("user", user.get());
                 model.addAttribute("money",user.get().getMoney());
-                model.addAttribute("getProducts", user.get().getCart());
+                model.addAttribute("getProducts", user.get().getCart().getProducts());
             }
         } else {
             model.addAttribute("userExists", false);
@@ -76,10 +80,6 @@ public class ShoppingCartController {
     @GetMapping("/deleteProductsShoppingCart")
     public String deleteProductsShoppingCart(Model model)
     {
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
         ShoppingCart carrito = user.get().getCart();
 
         double money = user.get().getMoney() - carrito.getSumProductPrices();
@@ -112,10 +112,6 @@ public class ShoppingCartController {
     public String deleteProductShoppingCart(Model model, @PathVariable String id)
     {
         Optional<Product> product = productService.findById(Long.parseLong(id));
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
         ShoppingCart carrito = user.get().getCart();
         if((product.get().getFeatures() != null) &&(product.get().getName() != null )&& (product.get().getPrice() > 0)&&(product.get().getName()!= null) )
         {
@@ -133,13 +129,7 @@ public class ShoppingCartController {
     @GetMapping("/addProduct/{id}")
     public String addProductShoppingCart(Model model, @PathVariable String id)
     {
-
         Optional<Product> product = productService.findById(Long.parseLong(id));
-        Optional<User> user = userService.findById(1);
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
-
         //no se puede comprar un producto que ya esté en el carrito
         boolean condition =(product.get().getName() != null )&& (product.get().getPrice() > 0);
         if(condition)

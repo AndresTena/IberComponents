@@ -45,6 +45,7 @@ public class LoginController {
             user.setShoppingCart(cart);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRoles(Collections.singletonList("USER"));
+            user.setMoney(100);
             userService.save(user);
 
             model.addAttribute("User", user);

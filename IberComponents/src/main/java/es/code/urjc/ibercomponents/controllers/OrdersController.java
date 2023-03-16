@@ -24,6 +24,8 @@ public class OrdersController
     @Autowired
     private UserService userService;
 
+    private Optional<User> user;
+
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -35,7 +37,7 @@ public class OrdersController
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
-            Optional<User> user = userService.findByName(principal.getName())   ;
+            user = userService.findByName(principal.getName())   ;
             System.out.println(user.isPresent());
             if(user!= null)
             {
@@ -49,11 +51,8 @@ public class OrdersController
     }
 
     @GetMapping("/orders")
-    public String getOrders(Model model)
+    public String getOrders(Model model,HttpServletRequest request)
     {
-
-
-        Optional<User> user = userService.findById(1);
         if(user!=null) {
             model.addAttribute("user", user.get());
         }
