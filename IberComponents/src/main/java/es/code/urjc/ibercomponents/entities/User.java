@@ -94,7 +94,7 @@ public class User {
         return userAdmin;
     }
 
-    public void setAdmin(Boolean UserAdmin) {
+    public void setAdmin(Boolean userAdmin) {
         this.userAdmin = userAdmin;
     }
 

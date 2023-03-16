@@ -92,8 +92,9 @@
       <label for="password">Contraseña</label>
     </div>
 
-    <button class="w-100 btn btn-lg btn-primary" onclick="location.href='/'; return false;" type="submit" value="Save">Cancel</button>
     <input class="w-100 btn btn-lg btn-primary" type="submit" value="Registrase"/>
+    <button class="w-100 btn btn-lg btn-primary" onclick="location.href='/'; return false;" type="submit" value="Save">Cancel</button>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
   </form>
 </main>
 
