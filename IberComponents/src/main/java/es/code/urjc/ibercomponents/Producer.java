@@ -1,27 +1,28 @@
 package es.code.urjc.ibercomponents;
 
-import net.bytebuddy.utility.nullability.AlwaysNull;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Producer {
-/*
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-    private int numData;
+    private String textoAEnviar;
 
-    @Scheduled(fixedRate = 1000)
-    public void sendMessage()
+    private String user;
+
+    public void setUser(String user)
     {
-        String data  = "Data " + numData++;
-
-        System.out.println("publishToQueue: '" + data + "'");
-        rabbitTemplate.convertAndSend("messages", data);
+        this.user = user;
     }
 
- */
+    public void sendMessage()
+    {
+        String data  = "Texto a enviar: "+ user;
+        System.out.println("publishToQueue: '" + data + "'");
+        rabbitTemplate.convertAndSend("messages", user);
+    }
+
 }

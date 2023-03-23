@@ -1,5 +1,6 @@
 package es.code.urjc.ibercomponents.controllers;
 
+import es.code.urjc.ibercomponents.Producer;
 import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.entities.User;
 import es.code.urjc.ibercomponents.services.UserService;
@@ -23,6 +24,9 @@ public class LoginController {
     private UserService userService;
 
     @Autowired
+    private Producer producer;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
@@ -33,7 +37,6 @@ public class LoginController {
 
     @GetMapping("/signin")
     public String signin() {
-
         return "sign-in";
     }
 
@@ -47,8 +50,10 @@ public class LoginController {
             user.setRoles(Collections.singletonList("USER"));
             user.setMoney(100);
             userService.save(user);
-
+            producer.setUser(user.getGmail());
+            producer.sendMessage();
             model.addAttribute("User", user);
+
         }
 
         return "redirect:/";
