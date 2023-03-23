@@ -11,6 +11,8 @@ import javax.swing.*;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.amqp.core.Queue;
 
 
 @SpringBootApplication
@@ -58,5 +60,11 @@ public class ServicioInternoApplication {
 				System.out.println(e);
 			}
 		}
+	@Bean
+	public Queue myQueue()
+	{
+		return new Queue("messages", false);
+	}
+
 
 }
