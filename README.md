@@ -88,4 +88,82 @@ Página que muestra los productos añadidos al carrito.
 
 ### Modelo Entidad-Relacion
 
-![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/Entidad-Relacion-DAW.png)
+![alt entidad-relacion](https://github.com/AndresTena/IberComponents/blob/main/Entidad-Relacion-DAW.png)
+
+## Fase 3
+### Instrucciones para desplegar la aplicación en la máquina virtual.
+#### En primer lugar se deberán generar un par de claves, una pública y una privada.
+
+#### En segundo lugar se deberá generar una instancia en openstack e intalarle el sistema operativo ubuntu, además de adjuntar la clave pública del par de claves creado a dicha máquina. 
+
+#### Para subir ficheros a dicha máquina lo podremos hacer con el comando: 
+
+scp -i ibercomponents-urjc <fichero_adjunto> ubuntu@10.100.139.247:/home/ubuntu
+
+#### En nuestro caso hemos tenido que subir los siguientes ficheros .jar: 
+
+scp -i ibercomponents-urjc IberComponents-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
+
+scp -i ibercomponents-urjc ServicioInterno-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
+
+scp -i ibercomponents-urjc 7.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+
+scp -i ibercomponents-urjc 8.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+
+scp -i ibercomponents-urjc 9.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+
+scp -i ibercomponents-urjc 10.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+
+#### A continuación para conectarnos a dicha máquina se utilizará el comando: 
+
+ssh -i ibercomponents-urjc.pem ubuntu@10.100.139.247
+
+#### Estas imagenes serán necesarias para cargar los primeros productos que se encuentran por defecto en la página principal. Una vez subidos los ficheros .jar y todas las imagenes necesarias. 
+
+#### Antes de ejecutar los ficheros jar se deberá instalar java mediante el comando:
+
+sudo apt install openjdk-17-jre-headless
+
+#### También se deberá instalar rabbitmq en la máquina, ya que este será utilizado por nuestro servicio interno: 
+
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
+
+
+#### También se deberá crear la base de datos, usada por nuestra aplicación, para ello será necesario instalar mysql en la máquina y realizar la siguiente configuración: 
+
+
+Instalar MySQL: sudo apt install mysql-server
+
+Iniciar MySQL: sudo service mysql start
+
+Acceder a la consola de MySQL: sudo mysql
+
+#### Dentro de la consola mysql se deberán ejecutar los siguientes comandos para permitir el acceso a la base de datos de nuestra aplicación:
+
+mysql > create database sql_db; --base de datos que utilizará nuestra aplicación
+
+mysql > ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+
+#### De esta manera la aplicación podrá acceder a la base de datos con el usuario root.
+
+
+#### Después de esto nuestra aplicación estará lista para ejecutarse y para ello se utilizarán los siguientes comandos: 
+
+java -jar IberComponents-0.0.1-SNAPSHOT.jar
+
+java -jar ServicioInterno-0.0.1-SNAPSHOT.jar
+
+#### Finalmente, se deberá abrir el puerto 8443 en la máquina virtual, para poder conectarnos a ella mediante la ruta: 
+
+https://10.100.139.247:8443
+
+### Nuevo diagrama UML
+
+
+![alt nuevo UML](https://github.com/AndresTena/IberComponents/blob/main/UMLFase3.png)
+
+
+### Servicio interno.
+
+Se ha utilizado rabbitmq con un esquema de productor consumidor, en el que el productor es la aplicación principal y el consumidor la aplicación de servicio interno, que se encarga de enviar correos a los nuevos usuarios que se registren.
