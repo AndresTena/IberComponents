@@ -124,6 +124,7 @@ public class IberComponentsApplication implements CommandLineRunner {
 
 
         Order order = new Order(1);
+        order.setUsername(admin.getName());
         orderRepository.save(order);
         shoppingCartRepository.save(shoppingCart);
     }

@@ -50,18 +50,13 @@ public class OrdersController
         }
     }
 
-    @GetMapping("/orders")
+    @GetMapping("/order")
     public String getOrders(Model model,HttpServletRequest request)
     {
-        if(user!=null) {
-            model.addAttribute("user", user.get());
-        }
-        List<Order> orders = orderService.findAll();
-        Order order = orders.get(0);
-
+        Optional<Order> order = orderService.findByName(user.get().getName());
         if(order!= null)
         {
-            model.addAttribute("order", order);
+            model.addAttribute("order", order.get());
             return "orders";
         }
         return "/";

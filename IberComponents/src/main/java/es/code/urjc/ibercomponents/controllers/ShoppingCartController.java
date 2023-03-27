@@ -83,8 +83,8 @@ public class ShoppingCartController {
         ShoppingCart carrito = user.get().getCart();
 
         double money = user.get().getMoney() - carrito.getSumProductPrices();
-        List<Order> orders = orderService.findAll();
-        Order order = orders.get(0);
+        //List<Order> orders = orderService.findAll();
+        Optional<Order> order = orderService.findByName(user.get().getName());
         if(money <0 && order != null)
         {
             return "/";
@@ -93,8 +93,8 @@ public class ShoppingCartController {
         ShoppingCart carritoAux = new ShoppingCart();
         shoppingCart.save(carritoAux);
         carritoAux.copyProducts(carrito);
-        order.addShoppingCart(carritoAux);
-        orderService.save(order);
+        order.get().addShoppingCart(carritoAux);
+        orderService.save(order.get());
         //el usuario tiene dinero suficiente para pagar los productos
         user.get().setMoney(user.get().getMoney() - carrito.getSumProductPrices());
         carrito.deleteAllProducts();
@@ -119,6 +119,8 @@ public class ShoppingCartController {
             user.get().setShoppingCart(carrito);
             userService.save(user.get());
             shoppingCart.save(carrito);
+            Optional<Order> order = orderService.findByName(user.get().getName());
+            orderService.save(order.get().deleteShoppingCart());
             return "/shoppingCart";
         }
         return "/";

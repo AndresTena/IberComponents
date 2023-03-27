@@ -18,6 +18,9 @@ public class OrderService {
         return repository.findById(id);
     }
 
+
+    public Optional<Order> findByName(String name) {return repository.findByUsername(name);}
+
     public List<Order> findAll()
     {
         return repository.findAll();

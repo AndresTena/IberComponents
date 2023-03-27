@@ -1,8 +1,10 @@
 package es.code.urjc.ibercomponents.controllers;
 
 import es.code.urjc.ibercomponents.Producer;
+import es.code.urjc.ibercomponents.entities.Order;
 import es.code.urjc.ibercomponents.entities.ShoppingCart;
 import es.code.urjc.ibercomponents.entities.User;
+import es.code.urjc.ibercomponents.services.OrderService;
 import es.code.urjc.ibercomponents.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +24,9 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private Producer producer;
@@ -45,6 +50,9 @@ public class LoginController {
     {
         if(user.getName() != null && user.getGmail() != null && user.getPassword() != null) {
             ShoppingCart cart = new ShoppingCart();
+            Order order = new Order();
+            order.setUsername(user.getName());
+            orderService.save(order);
             user.setShoppingCart(cart);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRoles(Collections.singletonList("USER"));

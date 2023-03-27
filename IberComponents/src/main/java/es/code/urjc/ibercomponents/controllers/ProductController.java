@@ -137,7 +137,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/deleteProduct/{id}")
+    @GetMapping("/deleteProduct/{id}")
     public String deleteProduct(Model model, @PathVariable String id, HttpServletRequest request)
     {
 
