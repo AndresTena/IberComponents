@@ -23,8 +23,8 @@ public class Consumer {
 		String subject = "Gracias por registrarse en IberComponents";
 		String text = "Bienvenido a IberComponents. Le deseamos que compre mucho para que no tengamos que chapar";
 		
-		String from = "dadservicio@hotmail.com"; // tu cuenta de Gmail
-		String password = "Holaquetal"; // la contraseña de tu cuenta de Gmail
+		String from = "iberservicedad@hotmail.com"; // tu cuenta de Gmail
+		String password = "DADibercomponents"; // la contraseña de tu cuenta de Gmail
 
 		// Configuración de las propiedades del servidor SMTP de Gmail
 		Properties props = new Properties();
