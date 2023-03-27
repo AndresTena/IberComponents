@@ -161,7 +161,7 @@ https://10.100.139.247:8443
 ### Nuevo diagrama UML
 
 
-![alt nuevo UML](https://github.com/AndresTena/IberComponents/blob/main/UMLFase3.png)
+![alt nuevo UML](https://github.com/AndresTena/IberComponents/blob/main/UMLFase3.jpeg)
 
 
 ### Servicio interno.
