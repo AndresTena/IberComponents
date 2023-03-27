@@ -91,7 +91,7 @@ public class ProductController {
 
 
 
-    @GetMapping("/newProduct")
+    @GetMapping("/newProductPage")
     public String newProduct() {
 
         return "newProduct";
@@ -102,7 +102,6 @@ public class ProductController {
 
     @PostMapping("/newProduct")
     public String newProductProcess(Model model, Product product, MultipartFile image) throws IOException {
-
         if((product.getFeatures() != null) &&(product.getName() != null )&& (product.getPrice() > 0)&&(product.getName()!= null) )
         {
             if (!image.isEmpty()) {
