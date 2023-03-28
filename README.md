@@ -98,21 +98,21 @@ Página que muestra los productos añadidos al carrito.
 
 #### Para subir ficheros a dicha máquina lo podremos hacer con el comando: 
 
-scp -i ibercomponents-urjc <fichero_adjunto> ubuntu@10.100.139.247:/home/ubuntu
+scp -i ibercomponents-urjc.pem <fichero_adjunto> ubuntu@10.100.139.247:/home/ubuntu
 
 #### En nuestro caso hemos tenido que subir los siguientes ficheros .jar: 
 
-scp -i ibercomponents-urjc IberComponents-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
+scp -i ibercomponents-urjc.pem IberComponents-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
 
-scp -i ibercomponents-urjc ServicioInterno-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
+scp -i ibercomponents-urjc.pem ServicioInterno-0.0.1-SNAPSHOT.jar ubuntu@10.100.139.247:/home/ubuntu
 
-scp -i ibercomponents-urjc 7.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+scp -i ibercomponents-urjc.pem 7.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
 
-scp -i ibercomponents-urjc 8.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+scp -i ibercomponents-urjc.pem 8.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
 
-scp -i ibercomponents-urjc 9.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+scp -i ibercomponents-urjc.pem 9.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
 
-scp -i ibercomponents-urjc 10.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
+scp -i ibercomponents-urjc.pem 10.png ubuntu@10.100.139.247:/home/ubuntu/src/main/resources/static/images
 
 #### A continuación para conectarnos a dicha máquina se utilizará el comando: 
 
