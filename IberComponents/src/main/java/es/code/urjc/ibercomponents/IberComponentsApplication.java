@@ -6,11 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.amqp.core.Queue;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
+@EnableCaching
 @SpringBootApplication
 @EnableScheduling
 public class IberComponentsApplication implements CommandLineRunner {
@@ -19,6 +25,7 @@ public class IberComponentsApplication implements CommandLineRunner {
         SpringApplication.run(IberComponentsApplication.class, args);
     }
 
+    private static final Log LOG = LogFactory.getLog(IberComponentsApplication.class);
     @Autowired
     private ProductRepository productRepository;
     @Autowired
@@ -132,6 +139,14 @@ public class IberComponentsApplication implements CommandLineRunner {
     @Bean
     public Queue myQueue() {
         return new Queue("messages", false);
+    }
+
+
+    @Bean
+    public CacheManager cacheManager() {
+        ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("reviews", "pedidos", "usuarios", "carritos", "productos");
+        LOG.info("Activating cache...");
+        return cache;
     }
 }
 
