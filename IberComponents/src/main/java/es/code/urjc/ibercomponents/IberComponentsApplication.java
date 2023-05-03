@@ -16,6 +16,12 @@ import org.springframework.amqp.core.Queue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+
+import com.hazelcast.config.Config;
+import com.hazelcast.config.JoinConfig;
+
+import java.util.Collections;
+
 @EnableCaching
 @SpringBootApplication
 @EnableScheduling
@@ -147,6 +153,18 @@ public class IberComponentsApplication implements CommandLineRunner {
         ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("reviews", "pedidos", "usuarios", "carritos", "productos");
         LOG.info("Activating cache...");
         return cache;
+    }
+    @Bean
+    public Config config() {
+
+        Config config = new Config();
+
+        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+
+        joinConfig.getMulticastConfig().setEnabled(false);
+        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
+
+        return config;
     }
 }
 
