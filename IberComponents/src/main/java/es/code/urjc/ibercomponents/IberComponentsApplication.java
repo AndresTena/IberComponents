@@ -20,11 +20,13 @@ import org.apache.commons.logging.LogFactory;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
 
+import org.springframework.session.hazelcast.config.annotation.web.http.EnableHazelcastHttpSession;
 import java.util.Collections;
 
 @EnableCaching
 @SpringBootApplication
 @EnableScheduling
+@EnableHazelcastHttpSession
 public class IberComponentsApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
