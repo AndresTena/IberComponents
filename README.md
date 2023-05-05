@@ -170,3 +170,10 @@ https://10.100.139.247:8443
 ### Servicio interno.
 
 Se ha utilizado rabbitmq con un esquema de productor consumidor, en el que el productor es la aplicación principal y el consumidor la aplicación de servicio interno, que se encarga de enviar correos a los nuevos usuarios que se registren.
+
+
+## Fase 4
+
+### Diagrama OpenStack.
+
+![alt diagrama OpenStack](https://github.com/AndresTena/IberComponents/blob/main/DiagramaOpenStack.png)
