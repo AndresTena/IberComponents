@@ -9,15 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-@CacheConfig (cacheNames = "pedidos")
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    @CacheEvict(allEntries=true)
     Order save(Order anuncio);
 
-    @Cacheable
     Optional<Order> findByUsername(String name);
 
-    @Cacheable
     List<Order> findAll();
 }

@@ -26,7 +26,6 @@ import java.util.Collections;
 @EnableCaching
 @SpringBootApplication
 @EnableScheduling
-@EnableHazelcastHttpSession
 public class IberComponentsApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
@@ -152,21 +151,9 @@ public class IberComponentsApplication implements CommandLineRunner {
 
     @Bean
     public CacheManager cacheManager() {
-        ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("reviews", "pedidos", "usuarios", "carritos", "productos");
+        ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("products");
         LOG.info("Activating cache...");
         return cache;
-    }
-    @Bean
-    public Config config() {
-
-        Config config = new Config();
-
-        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
-
-        joinConfig.getMulticastConfig().setEnabled(false);
-        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
-
-        return config;
     }
 }
 

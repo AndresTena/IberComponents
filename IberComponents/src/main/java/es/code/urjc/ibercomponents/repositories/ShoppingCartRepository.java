@@ -9,11 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-@CacheConfig(cacheNames = "carritos")
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
 
-    @CacheEvict(allEntries=true)
     ShoppingCart save(ShoppingCart anuncio);
-    @Cacheable
     List<ShoppingCart> findAll();
 }

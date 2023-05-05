@@ -9,11 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-@CacheConfig(cacheNames = "reviews")
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    @CacheEvict(allEntries=true)
     Review save(Review anuncio);
-    @Cacheable
     List<Review> findAll();
 }
