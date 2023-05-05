@@ -178,6 +178,6 @@ Se ha utilizado rabbitmq con un esquema de productor consumidor, en el que el pr
 
 ![alt diagrama OpenStack](https://github.com/AndresTena/IberComponents/blob/main/DiagramaOpenStack.png)
 
-### Diagrama UNL
+### Diagrama UML
 
 ![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/IberComponentsUMLDIagram.png)
