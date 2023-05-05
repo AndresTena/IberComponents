@@ -1,7 +1,7 @@
 # IberComponents
 Repositorio creado para realizar el trabajo de DAD 2023.
 
-https://www.youtube.com/watch?v=2k4kokXPQxc&ab_channel=MewtwoPerfectionist
+![alt video youtube](https://www.youtube.com/watch?v=2k4kokXPQxc&ab_channel=MewtwoPerfectionist)
 
 ## Fase 1 ✔️
 ### Temática 
@@ -178,4 +178,4 @@ Se ha utilizado rabbitmq con un esquema de productor consumidor, en el que el pr
 
 ![alt diagrama OpenStack](https://github.com/AndresTena/IberComponents/blob/main/DiagramaOpenStack.png)
 
-|[alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/IberComponentsUMLDIagram.png)
+![alt diagrama UML](https://github.com/AndresTena/IberComponents/blob/main/IberComponentsUMLDIagram.png)
