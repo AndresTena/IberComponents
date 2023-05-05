@@ -10,11 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-@CacheConfig(cacheNames = "products")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @CacheEvict(allEntries=true)
     Product save(Product anuncio);
-    @CachePut(value = "products")
     List<Product> findAll();
 }

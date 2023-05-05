@@ -151,7 +151,7 @@ public class IberComponentsApplication implements CommandLineRunner {
 
     @Bean
     public CacheManager cacheManager() {
-        ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("products");
+        ConcurrentMapCacheManager cache = new ConcurrentMapCacheManager("review");
         LOG.info("Activating cache...");
         return cache;
     }

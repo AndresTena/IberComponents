@@ -166,6 +166,7 @@ public class ProductController {
             reviewService.save(review);
             product.get().addReview(review);
             product.get().getReviewsMean();
+            reviewService.findAll();
             productService.save(product.get());
 
         }

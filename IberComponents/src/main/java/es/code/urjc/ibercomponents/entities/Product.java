@@ -1,5 +1,7 @@
 package es.code.urjc.ibercomponents.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.sql.Blob;
@@ -34,6 +36,7 @@ public class Product
 
     @Column(name = "resenas")
     @OneToMany
+    @JsonIgnore
     private List<Review> reviews;
 
 
